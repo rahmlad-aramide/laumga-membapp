@@ -1,5 +1,6 @@
 import Navbar from "../layouts/main/navbar";
-import HeroImg from "../assets/hero-image.png";
+import { Link } from "react-router-dom";
+// import HeroImg from "../assets/hero-image.png";
 
 export default function App() {
   return (

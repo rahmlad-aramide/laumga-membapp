@@ -1,5 +1,5 @@
 import Navbar from "../layouts/main/navbar";
-// import HeroImg from "../assets/hero-image.png";
+import HeroImg from "../assets/hero-image.png";
 
 export default function App() {
   return (
@@ -28,9 +28,11 @@ function Main() {
           commitment to excellence,
         </p>
 
-        <button className="font-kanit h-[56px] px-8 rounded bg-main font-medium font-2xl">
-          Join now
-        </button>
+        <Link to="/register">
+          <button className="font-kanit h-[56px] px-8 rounded bg-main font-medium font-2xl">
+            Join now
+          </button>
+        </Link>
       </main>
     </>
   );

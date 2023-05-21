@@ -6,7 +6,7 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <div className="mb-20"></div>
+        <div className="mb-20"></div>
       <Main />
     </>
   );

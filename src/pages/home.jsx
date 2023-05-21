@@ -1,5 +1,5 @@
 import Navbar from "../layouts/main/navbar";
-import HeroImg from "../assets/hero-image.png";
+// import HeroImg from "../assets/hero-image.png";
 
 export default function App() {
   return (

@@ -12,10 +12,10 @@ export default function Register() {
         <div className="bg-hero-image bg-cover bg-no-repeat bg-center h-[120vh]">
         </div>
         {/* LOGIN FORM COMPONENT */}
-        <div className="max-w-[596px] mt-[-650px] bg-black bg-opacity-30 p-10 rounded-[24px] mx-10 sm:ml-auto sm:mr-20">
-            <p className="text-white font-mont text-[40px] font-bold max-w-max mx-auto">Sign Up</p>
+        <div className="max-w-[596px] mt-[-710px] sm:mt-[-650px] bg-black bg-opacity-30 px-1 py-3 sm:p-10 rounded-[24px] mx-10 sm:ml-auto sm:mr-20">
+            <p className="text-white font-mont text-[25px] sm:text-[40px] font-bold max-w-max mx-auto">Sign Up</p>
             <RegisterForm />
-            <p className="max-w-max mx-auto text-[20px] py-2 text-white font-mont">Already have an account? <Link to="/login" >Login</Link></p>
+            <p className="max-w-max mx-auto text-[15px] sm:text-[20px] py-2 text-white font-mont">Already have an account? <Link to="/login" >Login</Link></p>
         </div>
       
     </>

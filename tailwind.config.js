@@ -7,8 +7,8 @@ export default {
         main: "#CCAE0E",
       },
       backgroundImage: {
-        "hero-image": "url('./src/assets/hero-image.png')",
-        "login-image": "url('./src/assets/login-bg.png')",
+        "hero-image": "url('./assets/images/hero-image.png')",
+        "login-image": "url('./assets/images/login-bg.png')",
       },
       fontFamily: {
         mont: ["Montserrat", "sans-serif"],

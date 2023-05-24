@@ -1,12 +1,11 @@
 import Navbar from "../layouts/main/navbar";
 import { Link } from "react-router-dom";
-// import HeroImg from "../assets/hero-image.png";
 
 export default function App() {
   return (
     <>
       <Navbar />
-        <div className="mb-20"></div>
+      <div className="mb-20"></div>
       <Main />
     </>
   );
@@ -15,7 +14,9 @@ export default function App() {
 function Main() {
   return (
     <>
-      <main className="font-man overflow-hidden bg-hero-image h-[800px]  bg-black bg-opacity-60 bg-no-repeat bg-cover flex flex-col gap-6 justify-center items-center px-4 text-white ">
+      <main
+        className="font-man overflow-hidden h-[800px] bg-hero-image  bg-black bg-opacity-60 bg-no-repeat bg-cover flex flex-col gap-6 justify-center items-center px-4 text-white "
+      >
         {/* ///////////////// */}
         <header className=" max-w-[802px] font-semibold text-3xl sm:text-4xl md:text-5xl text-center leading-tight">
           Unlocking Opportunities, <br /> Embracing Diversity: Muslim <br />{" "}

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "https://laumga-membapp-api.onrender.com/";
+export const BASE_URL = "https://laumga-membapp-api.onrender.com";
 
 export async function signUp(firstName, lastName, email, password) {
   return new Promise((resolve, reject) => {
@@ -32,7 +32,8 @@ export async function signIn(email, password) {
         resolve(response.data);
       })
       .catch((err) => {
-        const errorMessage = err.response.data.error || err.message;
+        const errorMessage = err.response.data.message || err.message;
+        // console.log(err.response.data.message)
         reject(new Error(errorMessage));
       });
   });

@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         main: "#CCAE0E",
+        form_bg: "#F2F2F2",
       },
       backgroundImage: {
         "hero-image": "url('./assets/images/hero-image.png')",

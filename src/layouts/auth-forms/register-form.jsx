@@ -42,7 +42,7 @@ export default function RegisterForm() {
   	return (
 		<>
 		{/* REGISTRATION FORM */}
-		<div className="shadow-2xl max-w-[550px] mx-7 md:mx-auto mt-[150px] px-20 py-10 rounded-[40px] mb-20">
+		<div className="shadow-2xl max-w-[550px] mx-7 md:mx-auto mt-[150px] px-8 sm:px-20 py-10 rounded-[40px] mb-20">
 				{/* *********************** REGISTER FORM *************************** */}
 				<form action={handleSignupSubmit} className="flex flex-col">
 					<p className=" font-mont text-[30px] md:text-[40px] text-main font-[500] text-center">Sign up</p>

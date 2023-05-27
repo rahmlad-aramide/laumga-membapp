@@ -34,7 +34,7 @@ export default function LoginForm() {
   	return (
 		<>
 		{/* LOGIN FORM */}
-			<div className="shadow-2xl max-w-[550px] mx-7 md:mx-auto mt-[150px] px-20 py-10 rounded-[40px]">
+			<div className="shadow-2xl max-w-[550px] mx-7 md:mx-auto mt-[150px] px-8 sm:px-20 py-10 rounded-[40px]">
 				{/* *********************** LOGIN FORM *************************** */}
 				<form onSubmit={handleLoginSubmit} className="flex flex-col">
 					<p className=" font-mont text-[30px] md:text-[40px] text-main font-[500] text-center">Login</p>

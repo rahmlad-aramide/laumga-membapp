@@ -30,11 +30,19 @@ export default function Navbar() {
             </ul>
           </nav>
           {/* cta button */}
-          <Link to="/register">
-            <button className="hidden md:block px-8 h-14 bg-main text-white font-medium text-2xl rounded">
-              Join now
-            </button>
-          </Link>
+          <div className="flex gap-5">
+            <Link to="/register">
+              <button className="hidden md:block px-8 h-14 bg-main text-white font-medium text-2xl rounded">
+                Join now
+              </button>
+            </Link>
+            <Link to="/login">
+              <button className="hidden md:block px-8 h-14 border-2 border-main font-medium text-2xl rounded">
+                Login
+              </button>
+            </Link>
+          </div>
+          
         </div>
       </div>
     </>

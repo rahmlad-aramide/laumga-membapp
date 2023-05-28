@@ -15,7 +15,7 @@ export async function signUp(firstName, lastName, email, password) {
         resolve(response.data);
       })
       .catch((err) => {
-        const errorMessage = err.response.data.error || err.message;
+        const errorMessage = err.response.data.message || err.message;
         reject(new Error(errorMessage));
       });
   });

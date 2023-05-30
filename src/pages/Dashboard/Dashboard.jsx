@@ -27,21 +27,21 @@ const Dashboard = () => {
           <div className="text-white text-center font-mont font-medium text-4xl">
             Personal Details
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 bg-white rounded-2xl max-w-[90%] mx-auto mt-8 shadow-lg px-7 md:px-14 py-6 md:py-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 bg-white rounded-2xl md:w-[90%] mx-auto mt-8 shadow-lg px-5 md:px-7 md:px-14 py-6 md:py-10">
             <div>
-              <div className='font-medium text-2xl'>Name</div>
+              <div className='font-normal sm:font-medium text-2xl'>Name</div>
               <div>Abdrahman Oladimeji</div>
             </div>
             <div>
-              <div className='font-medium text-2xl'>Matric No</div>
+              <div className='font-normal sm:font-medium text-2xl'>Matric No</div>
               <div>902360</div>
             </div>
             <div>
-              <div className='font-medium text-2xl'>Email</div>
+              <div className='font-normal sm:font-medium text-2xl'>Email</div>
               <div>rahman.o@doshservices.com</div>
             </div>
             <div>
-              <div className='font-medium text-2xl'>Occupation</div>
+              <div className='font-normal sm:font-medium text-2xl'>Occupation</div>
               <div>Software Engineer</div>
             </div>
           </div>

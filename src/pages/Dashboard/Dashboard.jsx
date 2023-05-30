@@ -23,11 +23,11 @@ const Dashboard = () => {
           </div>
         </div>
         <div className='col-span-9'>
-        <div className="w-[90%] mx-auto mt-[50px] md:mt-[150px] px-7 md:px-14 py-6 md:py-10">
+        <div className="w-[90%] mx-auto mt-[50px] md:mt-[150px] md:px-7 md:px-14 py-6 md:py-10">
           <div className="text-white text-center font-mont font-medium text-4xl">
             Personal Details
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 bg-white rounded-2xl w-[90%] mx-auto mt-8 shadow-lg px-7 md:px-14 py-6 md:py-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 bg-white rounded-2xl max-w-[90%] mx-auto mt-8 shadow-lg px-7 md:px-14 py-6 md:py-10">
             <div>
               <div className='font-medium text-2xl'>Name</div>
               <div>Abdrahman Oladimeji</div>

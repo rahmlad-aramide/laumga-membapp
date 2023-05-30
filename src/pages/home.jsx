@@ -1,6 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import Navbar from "../layouts/main/navbar";
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.svg";
+// import HeroImage from "../assets/images/hero-image.jpg";
 import MissionImage from "../assets/images/mission-img.png";
 import President from "../assets/images/president.png";
 import Footer from "../layouts/main/footer";
@@ -19,10 +21,10 @@ function Main() {
   return (
     <>
       <main
-        className="font-man overflow-hidden h-[800px] bg-hero-image  bg-black bg-opacity-60 bg-no-repeat bg-cover flex flex-col gap-6 justify-center items-center px-4 text-white "
+        className="font-man overflow-hidden h-[800px] bg-hero-image bg-black bg-opacity-60 bg-no-repeat bg-cover bg-center bg-blend-overlay flex flex-col gap-6 justify-center items-center px-4 text-white "
       >
-        {/* ///////////////// */}
-        <header className=" max-w-[802px] font-semibold text-3xl sm:text-4xl md:text-5xl text-center leading-tight">
+        {/* ***** HERO SECTION ***** */}
+        <header className="max-w-[802px] font-semibold text-3xl sm:text-4xl md:text-5xl text-center leading-normal">
           Unlocking Opportunities, <br /> Embracing Diversity: Muslim <br />{" "}
           Graduates Thrive
         </header>
@@ -35,7 +37,7 @@ function Main() {
         </p>
 
         <Link to="/register">
-          <button className="font-kanit h-[56px] px-8 rounded bg-main font-medium font-2xl">
+          <button className="font-kanit h-12 px-8 rounded bg-main font-medium text-xl transition duration-200 hover:scale-90 active:scale-100">
             Join now
           </button>
         </Link>
@@ -44,10 +46,10 @@ function Main() {
       <section className="flex flex-col md:flex-row mx-10 md:mx-0 items-center justify-around mt-20 md:mt-28 mb-40">
         <div className="hidden md:flex gap-5 items-center text-center">
           <img src={Logo} alt="logo" className="h-[48px] sm:h-auto w-auto" />
-          <span className=" font-mont text-[40px] md:text-[73px] font-bold text-main">LAUMGA</span>
+          <span className=" font-mont text-[40px] md:text-[73px] font-bold text-main">LAUMGA <br />MembApp</span>
         </div>
         <div className="font-man max-w-[600px] text-center md:text-left">
-          <h1 className="text-[30px] md:text-[42px] font-bold text-main">Welcome To LAUMGA</h1>
+          <h1 className="text-[30px] md:text-[42px] font-bold text-main">Welcome To MembApp</h1>
           <p className="text-[14px] md:text-[18px]">
             All praise and adorations are due to Allah, the Lord of all 
             creatures. We send our salutation upon the noble soul of our 
@@ -79,7 +81,7 @@ function Main() {
       </section>
       {/* ***** PRESIDENT SECTION ***** */}
       <section className="flex flex-col md:flex-row md:gap-10 items-center mt-10 md:mt-20 text-center md:text-left">
-        <div>
+        <div className="border-8 border-main mb-8 mx-8">
           <img src={President} alt="President" />
         </div>
         <div className="text-main">

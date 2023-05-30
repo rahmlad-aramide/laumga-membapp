@@ -1,0 +1,53 @@
+import {Navbar, Footer} from '../../layouts/main';
+import President from "../../assets/images/president.png";
+
+const Dashboard = () => {
+  return (
+    <section>
+      <Navbar />
+      <div className="grid grid-cols-12 bg-hero-image min-h-screen bg-center bg-black/50 bg-blend-overlay font-mont">
+        <div className='col-span-3 h-full bg-[#f4f4f4] pt-28 mr-10'>
+          <div className='flex flex-col mb-10'>
+            <div className='mx-auto mb-4'>
+              <img src={President} alt="recent passport" className='rounded-full' />
+            </div>
+            <div className='mx-auto'>Recent Passport</div>
+          </div>
+          <div className='flex flex-col'>
+            <div className='mx-auto mb-4 scale-90'>
+              <img src={President} alt="old passport" className='rounded-full' />
+            </div>
+            <div className='mx-auto'>Old Passport</div>
+          </div>
+        </div>
+        <div className='col-span-9'>
+        <div className="w-[90%] mx-auto mt-[150px] px-7 md:px-14 py-6 md:py-10">
+          <div className="text-white text-center font-mont font-medium text-4xl">
+            Personal Details
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 bg-white rounded-2xl w-[90%] mx-auto mt-8 shadow-lg px-7 md:px-14 py-6 md:py-10">
+            <div>
+              <div className='font-medium text-2xl'>Name</div>
+              <div>Abdrahman Oladimeji</div>
+            </div>
+            <div>
+              <div className='font-medium text-2xl'>Matric No</div>
+              <div>902360</div>
+            </div>
+            <div>
+              <div className='font-medium text-2xl'>Email</div>
+              <div>rahman.o@doshservices.com</div>
+            </div>
+            <div>
+              <div className='font-medium text-2xl'>Occupatin</div>
+              <div>Software Engineer</div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <Footer />
+    </section>
+  )
+}
+export default Dashboard;

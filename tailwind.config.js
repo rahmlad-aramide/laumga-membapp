@@ -8,7 +8,7 @@ export default {
         form_bg: "#F2F2F2",
       },
       backgroundImage: {
-        "hero-image": "url('./assets/images/hero-image.png')",
+        "hero-image": "url('./assets/images/hero-image.jpg')",
         "login-image": "url('./assets/images/login-bg.png')",
       },
       fontFamily: {

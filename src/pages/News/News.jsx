@@ -9,7 +9,7 @@ const News = () => {
         Coming Soon!
       </h1>
       <p className="text-lg text-gray-600 mb-12">
-        We are currently working hard to bring this page to life.
+        We&rsquo;re currently working hard to bring this page to life.
       </p>
       <Link to="/">
           <button className="rounded-lg bg-main py-3 px-6 font-bold uppercase text-white transition duration-300 hover:scale-90 active:scale-100">

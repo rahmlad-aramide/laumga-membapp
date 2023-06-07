@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
+import { Navbar } from "../../layouts/main";
 
 const Error = () => {
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100">
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="max-w-lg text-center">
         <h1 className="mb-8 text-9xl font-extrabold text-main">404</h1>
-        <p className="mb-8 px-4 text-gray-600">
+        <p className="mb-8 px-4 text-lg text-gray-600">
           Sorry, the page you are looking for could not be found.
         </p>
         <Link to="/">

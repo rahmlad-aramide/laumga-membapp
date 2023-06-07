@@ -1,12 +1,4 @@
-import { useState } from "react";
-
-function FileUploadInput() {
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
-  };
+const FileUploadInput = ({selectedFile, handleFileChange}) => {
 
   return (
     <div className="flex flex-col items-center justify-center mt-2">

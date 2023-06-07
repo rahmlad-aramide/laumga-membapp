@@ -30,12 +30,17 @@ export default function Navbar() {
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/dashboard">Dashboard</NavLink>
               </li>
               <li>
-                <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/details">Details</NavLink>
+                <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/news">News</NavLink>
               </li>
             </ul>
           </nav>
           {/* cta button */}
           <div className="flex gap-5">
+            <Link to="/signup">
+              <button className="hidden md:block px-8 h-12 bg-main text-white font-medium text-lg rounded transition duration-200 hover:scale-90 active:scale-100">
+                Signup
+              </button>
+            </Link>
             <Link to="/register">
               <button className="hidden md:block px-8 h-12 bg-main text-white font-medium text-lg rounded transition duration-200 hover:scale-90 active:scale-100">
                 Join now

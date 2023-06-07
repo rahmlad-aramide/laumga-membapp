@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Home } from "./pages";
+import { Home, News } from "./pages";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Error from "./pages/Error/Error";
-import { Dashboard, Details } from "./pages";
+import { Dashboard, Details, Signup } from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -22,12 +22,20 @@ const router = createBrowserRouter([
     element: <Register />
   },
   {
+    path: "/signup",
+    element: <Signup />
+  },
+  {
     path: "/dashboard",
     element: <Dashboard />
   },
   {
-    path: "/details",
+    path: "/dashboard/details",
     element: <Details />
+  },
+  {
+    path: "/news",
+    element: <News />
   },
   {
     path: "/*",

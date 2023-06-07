@@ -10,7 +10,7 @@ export default function Footer() {
                 <span className=" font-mont text-[40px] md:text-[73px] font-bold text-white">MembApp</span>
             </div>
             <div className="font-mont text-white">
-                <h1 className="text-[30px] md:text-[40px] font-man">Quick Links</h1>
+                <h1 className="text-[30px] font-man">Quick Links</h1>
                 <ul className="text-[15px] md:text-[20px]">
                     <Link to="/"><li>Home</li></Link>
                     <li>About Us</li>
@@ -18,7 +18,7 @@ export default function Footer() {
                 </ul>
             </div>
             <div className="font-mont text-white">
-                <h1 className="text-[30px] md:text-[40px] font-man">Become a Member</h1>
+                <h1 className="text-[30px] font-man">Become a Member</h1>
                 <ul className="text-[15px] md:text-[20px]">
                     <Link to="/register">
                         <li>Join Us</li>

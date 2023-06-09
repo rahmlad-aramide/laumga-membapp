@@ -2,17 +2,19 @@ import axios from "axios";
 
 export const BASE_URL = "https://laumga-membapp-api.onrender.com";
 
-export async function signUp(matricNumber, firstName, lastName, email, password, recentPicture) {
+// export async function signUp(matricNumber, firstName, lastName, email, password, recentPicture) {
+export async function signUp(formData) {
   return new Promise((resolve, reject) => {
     axios
-      .post(`${BASE_URL}/auth/signup`, {
-        matricNumber,
-        firstName,
-        lastName,
-        email,
-        password,
-        recentPicture,
-      })
+      .post(`${BASE_URL}/auth/signup`, formData)
+      // {
+      //   matricNumber,
+      //   firstName,
+      //   lastName,
+      //   email,
+      //   password,
+      //   recentPicture,
+      // })
       .then((response) => {
         resolve(response.data);
       })

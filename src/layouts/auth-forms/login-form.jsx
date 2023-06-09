@@ -67,18 +67,18 @@ export default function LoginForm() {
 	return (
 		<>
 			{/* LOGIN FORM */}
-			<div className="shadow-2xl max-w-[550px] mx-7 md:mx-auto mt-[150px] px-8 sm:px-20 py-10 rounded-[40px] bg-hero-image bg-black bg-opacity-60 bg-no-repeat bg-cover bg-center bg-blend-overlay">
+			<div className="shadow-2xl max-w-[550px] mx-7 md:mx-auto relative top-48 px-8 sm:px-20 py-10 rounded-[40px] bg-white bg-no-repeat bg-cover bg-center bg-blend-overlay">
 				{/* *********************** LOGIN FORM *************************** */}
 				<form onSubmit={handleLoginSubmit} className="flex flex-col font-man">
 					<p className=" font-mont text-[30px] md:text-[40px] text-main font-[500] text-center mb-2">Login</p>
 					<span>{theError ? theError : null}</span> {/* DISPLAY ERROR MESSAGE */}
 					<span>{theResponse ? theResponse : null}</span> {/* DISPLAY SUCCESS MESSAGE */}
 					{/* EMAIL INPUT */}
-					<label htmlFor="email" className="text-white">Email</label>
-					<input type="email" value={email} onChange={handleEmailChange} className="mt-3 bg-form_bg rounded-md outline-none p-3 md:p-4 mb-3" />
+					<label htmlFor="email" className="text-black">Email</label>
+					<input type="email" value={email} placeholder="Enter email address" onChange={handleEmailChange} className="mt-3 bg-form_bg rounded-md outline-none p-3 md:p-4 mb-3" />
 					{/* PASSWORD INPUT */}
-					<label htmlFor="password" className="text-white">Password</label>
-					<input type="password" value={password} onChange={handlePasswordChange} className="mt-3 bg-form_bg rounded-md outline-none p-3 md:p-4 mb-3" />
+					<label htmlFor="password" className="text-black">Password</label>
+					<input type="password" value={password} placeholder="Enter password" onChange={handlePasswordChange} className="mt-3 bg-form_bg rounded-md outline-none p-3 md:p-4 mb-3" />
 					<p className=" text-center text-main underline">Forgot Password?</p>
 					<button type="submit" className=" bg-main font-mont w-full mb-6 m-auto rounded-md mt-6 text-white">{loading ? <p className="p-4">Loading...</p> : <p className=" p-4">Login</p>}</button>
 				</form>

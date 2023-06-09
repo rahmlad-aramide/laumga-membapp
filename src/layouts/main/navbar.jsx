@@ -11,7 +11,7 @@ export default function Navbar() {
 
   return (
     <header>
-      <div className="fixed top-0 left-0 w-full bg-white shadow h-20 flex justify-center font-kanit">
+      <div className="fixed top-0 left-0 w-full bg-white shadow h-20 flex justify-center font-kanit z-20">
         <div className="max-w-[1200px] w-full h-full flex items-center justify-between px-4">
           {/* brand - logo and name */}
           <Link to="/">
@@ -44,14 +44,9 @@ export default function Navbar() {
           </nav>
           {/* cta button */}
           <div className="flex gap-5">
-            <Link to="/signup">
+            <Link to="/signup" className={`${userId ? 'hidden' : 'block'}`}>
               <button className="hidden md:block px-8 h-12 bg-main text-white font-medium text-lg rounded transition duration-200 hover:scale-90 active:scale-100">
                 Signup
-              </button>
-            </Link>
-            <Link to="/register" className={`${userId ? 'hidden' : 'block'}`}>
-              <button className="hidden md:block px-8 h-12 bg-main text-white font-medium text-lg rounded transition duration-200 hover:scale-90 active:scale-100">
-                Join now
               </button>
             </Link>
             <Link to="/login" className={`${userId ? 'hidden' : 'block' }`}>

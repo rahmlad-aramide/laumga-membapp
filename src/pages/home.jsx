@@ -36,7 +36,7 @@ function Main() {
           commitment to excellence,
         </p>
 
-        <Link to="/register">
+        <Link to="/signup">
           <button className="font-kanit h-12 px-8 rounded bg-main font-medium text-xl transition duration-200 hover:scale-90 active:scale-100">
             Join now
           </button>

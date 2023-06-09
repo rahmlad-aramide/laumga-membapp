@@ -23,7 +23,7 @@ export default function MobileNavbar() {
         setIsOpen(!isOpen);
     };
 
-    let nav, hamburger, close
+    let nav
     nav = <ul className={`navbar-menu ${isOpen ? 'open' : ''} bg-white p-10 text-left text-[20px] min-w-[250px] h-[100vh] absolute top-[3.5rem] right-[-20px]`}>
             <li>
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/">Home</NavLink>
@@ -39,9 +39,9 @@ export default function MobileNavbar() {
             </li>
             <div className="flex flex-col gap-5 mt-10 text-center">
                 <li className={`${userId ? 'hidden' : 'block'}`}>
-                    <Link to="/register">
+                    <Link to="/signup">
                     <button className=" px-8 h-12 bg-main text-white font-medium text-lg rounded transition duration-200 hover:scale-90 active:scale-100">
-                        Join now
+                        Signup
                     </button>
                     </Link>
                 </li>

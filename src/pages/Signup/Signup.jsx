@@ -2,14 +2,13 @@ import { Navbar, Footer } from '../../layouts/main';
 import { Input, FileUploadInput } from '../../components';
 import { useState } from 'react';
 import Terms from './Terms';
+import { signUp } from '../../apis';
 
 const defaultFormFields = {
-  name: "",
+  sname: "",
+  fname: "",
   matric: "",
   email: "",
-  occupation: "",
-  address: "",
-  residential: "",
   password: "",
   confirm_password: ""
 }
@@ -24,6 +23,9 @@ const Signup = () => {
   const [policy, setPolicy] = useState(false);
   const [selectedFile1, setSelectedFile1] = useState(null);
   const [selectedFile2, setSelectedFile2] = useState(null);
+  const [response, setResponse] = useState('');
+	const [error, setError] = useState('');
+	const [loading, setLoading] = useState(null);
 
   const handleFileUpload1 = (event) => {
     const file = event.target.files[0];
@@ -41,8 +43,52 @@ const Signup = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
-    console.log(formFields)
+    // console.log(formFields)
   }
+
+  const handleSignupSubmit = async (event) => {
+		event.preventDefault();
+    const formData = {
+      surname: formFields.sname,
+      lastName: formFields.fname,
+      email: formFields.email,
+      matricNumber: formFields.matric,
+      password: password,
+      // oldPicture: selectedFile1,
+      recentPicture: selectedFile2
+  }
+
+		setError('');
+		setLoading(true);
+		console.log(formData)
+
+		try {
+			const res = await signUp(formData);
+			setResponse(res);
+			console.log(res)
+
+			setTimeout(() => {
+				navigate("/login");
+			}, 3000);
+			setLoading(false);
+
+		} catch (err) {
+			setLoading(false);
+			setError(err);
+			console.log(err)
+		}
+	};
+
+  let theError, theResponse
+	// display error message component
+	if (error.message) {
+		theError = <p className='bg-red-200 p-4 md:p-8 border md:relative md:left-[50%] md:right-[50%] border-red-700 rounded-md text-red-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{error.message}. Please try again!</p>;
+	}
+
+	// display success message component
+	if (response.message) {
+		theResponse = <p className='bg-green-200 p-4 md:p-8 border md:relative left-[50%] right-[50%] border-green-700 rounded-md text-green-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{response.message}. Please login!</p>;
+	}
 
 
   return (
@@ -56,8 +102,10 @@ const Signup = () => {
               <div className="text-main font-mont font-medium text-4xl mb-5">
                 Signup
               </div>
-              <form>
+              <form onSubmit={handleSignupSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <span>{theError ? theError : null}</span> {/* DISPLAY ERROR MESSAGE */}
+					        <span>{theResponse ? theResponse : null}</span> {/* DISPLAY SUCCESS MESSAGE */}
                   <div>
                     <label htmlFor="sname">Surname</label>
                     <Input py="12px" id="sname" type="text" name="sname" value={sname} onChange={handleChange} placeholder="Enter your surname here" required />
@@ -94,7 +142,7 @@ const Signup = () => {
                 <div className='flex justify-end items-end'>
                   <div className='mt-12 flex justify-end items-end'>
                     <button className='bg-main text-white rounded-lg border border-main hover:scale-90 active:scale-100 transition duration-200 py-2 px-6 md:px-10'>
-                      Signup
+                      {loading ? <p>Loading...</p> : <p>Signup</p>}
                     </button>
                   </div>
                 </div>

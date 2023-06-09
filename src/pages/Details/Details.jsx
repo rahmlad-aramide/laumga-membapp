@@ -23,7 +23,7 @@ const Details = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const [selectedFile, setSelectedFile] = useState(null);
   
-  const {name, matric, email, occupation, address, residential, password, confirm_password} = formFields;
+  const {name, matric, occupation, address, residential} = formFields;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
@@ -58,10 +58,6 @@ const Details = () => {
                 <Input py="12px" id="matric" type="text" name="matric" value={matric} onChange={handleChange} placeholder="Enter your matric number here" required />
               </div>
               <div>
-                <label htmlFor="email">Email</label>
-                <Input py="12px" id="email" type="email" name="email" value={email} onChange={handleChange} placeholder="Enter your email address here" required />
-              </div>
-              <div>
                 <label htmlFor="occupation">Occupation</label>
                 <Input py="12px" id="occupation" type="text" name="occupation" value={occupation} onChange={handleChange} placeholder="Enter your occupation here" required />
               </div>
@@ -73,14 +69,7 @@ const Details = () => {
                 <label htmlFor="residential">Residential Address</label>
                 <Input py="12px" id="residential" type="text" name="residential" value={residential} onChange={handleChange} placeholder="Enter your residential address here" required />
               </div>
-              <div>
-                <label htmlFor="password">Password</label>
-                <Input py="12px" id="password" type="password" name="password" value={password} onChange={handleChange} placeholder="Enter your password here" required />
-              </div>
-              <div>
-                <label htmlFor="confirm_password">Residential Address</label>
-                <Input py="12px" id="confirm_password" type="password" name="confirm_password" value={confirm_password} onChange={handleChange} placeholder="Confirm your password" required />
-              </div>
+              <br className="hidden md:flex" />
               <div>
                 <div>Old Passport</div>
                 <FileUploadInput selectedFile={selectedFile} handleFileChange={handleFileChange} />

@@ -18,6 +18,7 @@ export default function App() {
 }
 
 function Main() {
+  const userId = localStorage.getItem('userId');
   return (
     <>
       <main
@@ -35,12 +36,19 @@ function Main() {
           potential. With a supportive community, valuable resources, and a
           commitment to excellence,
         </p>
-
-        <Link to="/signup">
+        {
+          !userId?
+          <Link to="/signup">
           <button className="font-kanit h-12 px-8 rounded bg-main font-medium text-xl transition duration-200 hover:scale-90 active:scale-100">
             Join now
           </button>
+        </Link>:
+          <Link to="/dashboard">
+          <button className="font-kanit h-12 px-8 rounded bg-main font-medium text-xl transition duration-200 hover:scale-90 active:scale-100">
+            Go to Dashboard
+          </button>
         </Link>
+        }
       </main>
       {/* ***** WELCOME SECTION ***** */}
       <section className="flex flex-col md:flex-row mx-10 md:mx-0 items-center justify-around mt-20 md:mt-28 mb-40">

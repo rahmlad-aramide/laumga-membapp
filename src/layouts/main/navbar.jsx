@@ -31,9 +31,9 @@ export default function Navbar() {
               <li>
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/">Home</NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/about">About Us</NavLink>
-              </li>
+              </li> */}
               { userId ? <li>
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/dashboard">Dashboard</NavLink>
               </li> : ''}

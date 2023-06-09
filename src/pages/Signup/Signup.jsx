@@ -76,12 +76,12 @@ const Signup = () => {
 
     setError('');
     setLoading(true);
-    console.log(formData)
+    // console.log(formData)
 
     try {
       const res = await signUp(formData);
       setResponse(res);
-      console.log(res)
+      // console.log(res)
 
       setTimeout(() => {
         navigate("/login");

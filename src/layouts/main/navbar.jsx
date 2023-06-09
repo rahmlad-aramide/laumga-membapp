@@ -49,7 +49,7 @@ export default function Navbar() {
                 Signup
               </button>
             </Link>
-            <Link to="/register">
+            <Link to="/register" className={`${userId ? 'hidden' : 'block'}`}>
               <button className="hidden md:block px-8 h-12 bg-main text-white font-medium text-lg rounded transition duration-200 hover:scale-90 active:scale-100">
                 Join now
               </button>

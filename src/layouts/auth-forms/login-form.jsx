@@ -35,12 +35,14 @@ export default function LoginForm() {
 			const userEmail = res.result.email;
 			const surname = res.result.surname;
 			const lastName = res.result.lastName;
+			const matricNumber = res.result.matricNumber;
 			const recentPicture = res.result.userDetails.recentPicture;
 
 			localStorage.setItem("userId", userId)
 			localStorage.setItem("userEmail", userEmail)
 			localStorage.setItem("surname", surname)
 			localStorage.setItem("lastName", lastName)
+			localStorage.setItem("matricNumber", matricNumber)
 			localStorage.setItem("recentPicture", recentPicture)
 			setLoading(false);
 

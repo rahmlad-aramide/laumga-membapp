@@ -50,7 +50,7 @@ const Dashboard = () => {
               </div>
               <div>
                 <div className='font-normal sm:font-medium text-2xl'>Occupation</div>
-                <div>{occupation ? occupation : <p>Not set</p>}</div>
+                <div>{occupation ? occupation : <p>Not set, update details to set it</p>}</div>
               </div>
             </div>
             <div className='mt-12 flex justify-end items-end'>

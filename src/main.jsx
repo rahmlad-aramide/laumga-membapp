@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Home, News } from "./pages";
 import "./index.css";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/login";
-import Register from "./pages/register";
+// import Register from "./pages/register";
+// import Register from './pages/Signup';
 import Error from "./pages/Error/Error";
 import { Dashboard, Details, Signup } from "./pages";
 
@@ -30,10 +31,10 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />
   },
-  {
-    path: "/register",
-    element: <Register />
-  },
+  // {
+  //   path: "/register",
+  //   element: <Register />
+  // },
   {
     path: "/signup",
     element: <Signup />

@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
+import MobileNavbar from "./mobileNav";
 // import NewLogo from "../../assets/images/logo.jpg";
+import { Logout } from "./mobileNav";
 
 export default function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const userId = localStorage.getItem('userId');
+
   return (
     <header>
       <div className="fixed top-0 left-0 w-full bg-white shadow h-20 flex justify-center font-kanit">
@@ -19,6 +23,9 @@ export default function Navbar() {
             </div>
           </Link>
           {/* nav links */}
+          <nav className="md:hidden">
+            <MobileNavbar />
+          </nav>
           <nav className="hidden md:block">
             <ul className="flex gap-8 text-xl font-light">
               <li>
@@ -27,9 +34,9 @@ export default function Navbar() {
               <li>
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/about">About Us</NavLink>
               </li>
-              <li>
+              { userId ? <li>
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/dashboard">Dashboard</NavLink>
-              </li>
+              </li> : ''}
               <li>
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/news">News</NavLink>
               </li>
@@ -47,11 +54,16 @@ export default function Navbar() {
                 Join now
               </button>
             </Link>
-            <Link to="/login">
+            <Link to="/login" className={`${userId ? 'hidden' : 'block' }`}>
               <button className="hidden md:block px-8 h-12 border-2 border-main text-main font-medium text-lg rounded transition duration-200 hover:scale-90 active:scale-100">
                 Login
               </button>
             </Link>
+            <div className={`${userId ? 'block' : 'hidden' }`}>
+              <button onClick={Logout} className="hidden md:block px-8 h-12 border-2 border-main text-main font-medium text-lg rounded transition duration-200 hover:scale-90 active:scale-100">
+                Logout
+              </button>
+            </div>
           </div>
         </div>
         {/* Mobile Nav */}

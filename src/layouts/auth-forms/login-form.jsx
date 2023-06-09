@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { signIn } from "../../apis/index";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
 
@@ -19,6 +20,8 @@ export default function LoginForm() {
 		setPassword(event.target.value);
 	};
 
+	const navigate = useNavigate();
+
 	const handleLoginSubmit = async (event) => {
 		event.preventDefault();
 		setError('');
@@ -27,13 +30,27 @@ export default function LoginForm() {
 		try {
 			// Call the signIn function with matricNo and password
 			const res = await signIn(email, password);
-			setResponse(res.message);
+			setResponse(res);
+			const userId = res.result._id;
+			const userEmail = res.result.email;
+			const firstName = res.result.firstName;
+			const lastName = res.result.lastName;
+
+			localStorage.setItem("userId", userId)
+			localStorage.setItem("userEmail", userEmail)
+			localStorage.setItem("firstName", firstName)
+			localStorage.setItem("lastName", lastName)
 			setLoading(false);
+
+			setTimeout(() => {
+				navigate("/dashboard");
+			}, 3000);
 			// Handling successful sign-in here
 		} catch (err) {
 			setLoading(false);
 			// Handling sign-in error here
 			setError(err);
+			console.log(err)
 		}
 	};
 
@@ -44,7 +61,7 @@ export default function LoginForm() {
 
 	// display success message component
 	if (response.message) {
-		theResponse = <p className='bg-green-200 p-4 md:p-8 border border-green-700 rounded-md text-green-900 font-mont max-w-[350px] m-auto mb-2 text-center'>{response.message}. Please login!</p>;
+		theResponse = <p className='bg-green-200 p-4 md:p-8 border border-green-700 rounded-md text-green-900 font-mont max-w-[350px] m-auto mb-2 text-center'>{response.message}!.</p>;
 	}
 
 	return (

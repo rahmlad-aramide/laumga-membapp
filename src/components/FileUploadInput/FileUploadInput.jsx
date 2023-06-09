@@ -20,7 +20,7 @@ const FileUploadInput = ({selectedFile, handleFileChange}) => {
             ? selectedFile.name
             : "Click here or drop files to upload"}
         </span>
-        <input type="file" className="hidden" onChange={handleFileChange} />
+        <input type="file" name="file" className="hidden" onChange={handleFileChange} />
       </label>
     </div>
   );

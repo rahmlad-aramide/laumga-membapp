@@ -2,18 +2,25 @@ import { useState } from "react";
 import { signUp } from "../../apis/index";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import FileUploadInput from "../../components/FileUploadInput/FileUploadInput";
 
 export default function RegisterForm() {
 
+	const [matricNumber, setMatricNumber] = useState('');
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [selectedImage, setSelectedImage] = useState(null);
 	const [response, setResponse] = useState('');
 	const [error, setError] = useState('');
 	const [loading, setLoading] = useState(null);
 
 	let theError, theResponse;
+
+	const handleMatricNumberChange = (event) => {
+		setMatricNumber(event.target.value);
+	};
 
 	const handleFirstNameChange = (event) => {
 		setFirstName(event.target.value);
@@ -31,27 +38,36 @@ export default function RegisterForm() {
 		setPassword(event.target.value);
 	};
 
+	const handleImageUpload = (e) => {
+		setSelectedImage(e.target.files[0]);
+	};
+
 	const navigate = useNavigate();
 
 	const handleSignupSubmit = async (event) => {
 		event.preventDefault();
 		setError('');
 		setLoading(true);
+		console.log("Inside handle submit")
+		console.log(selectedImage)
 
 		try {
-			// Call the signUp API with firstName, lastName, email and password.
-			const res = await signUp(firstName, lastName, email, password);
+			const res = await signUp(matricNumber, firstName, lastName, email, password, selectedImage);
 			setResponse(res);
-			// Redirect to login page after successful response.
-			setTimeout(() => { // wait for 3 seconds
-				navigate("/login"); // then redirect to login page
+			console.log(res)
+			console.log('Inside sucess')
+
+			setTimeout(() => {
+				navigate("/login");
 			}, 3000);
 			setLoading(false);
 
 		} catch (err) {
 			setLoading(false);
+			console.log('Inside sucess')
 			// Handling sign-in error here
 			setError(err);
+			console.log(err)
 		}
 	};
 
@@ -74,6 +90,9 @@ export default function RegisterForm() {
 					<p className=" font-mont text-[30px] md:text-[40px] text-main font-[500] text-center mb-2">Sign up</p>
 					<span>{theError ? theError : null}</span> {/* DISPLAY ERROR MESSAGE */}
 					<span>{theResponse ? theResponse : null}</span> {/* DISPLAY SUCCESS MESSAGE */}
+					{/* MATRIC NUMBER INPUT */}
+					<label htmlFor="matricNumber" className="text-white">Matric Number</label>
+					<input type="text" value={matricNumber} onChange={handleMatricNumberChange} className="mt-3 bg-form_bg rounded-md outline-none p-3 md:p-4 mb-3" />
 					{/* FIRST NAME INPUT */}
 					<label htmlFor="firstName" className="text-white">First Name</label>
 					<input type="text" value={firstName} onChange={handleFirstNameChange} className="mt-3 bg-form_bg rounded-md outline-none p-3 md:p-4 mb-3" />
@@ -86,6 +105,8 @@ export default function RegisterForm() {
 					{/* CONFIRM PASSWORD INPUT */}
 					<label htmlFor="password" className="text-white">Password</label>
 					<input type="password" value={password} onChange={handlePasswordChange} className="mt-3 bg-form_bg rounded-md outline-none p-3 md:p-4 mb-3" />
+					{/* IMAGE UPLOAD FIELD */}
+					<FileUploadInput selectedFile={selectedImage} handleFileChange={handleImageUpload} />
 					<button type="submit" className=" bg-main font-mont w-full mb-6 m-auto rounded-md mt-6 text-white">{loading ? <p className="p-4">Loading...</p> : <p className="p-4">Sign up</p>}</button>
 				</form>
 				<p className="text-center font-man text-white">Already have an account? <Link to="/login" className=" text-main underline">Login</Link></p>

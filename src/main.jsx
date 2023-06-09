@@ -8,6 +8,7 @@ import Login from "./pages/login";
 // import Register from './pages/Signup';
 import Error from "./pages/Error/Error";
 import { Dashboard, Details, Signup } from "./pages";
+import Search from "./pages/search/search";
 
 
 const AuthenticatedRoute = ({ component: Component, ...rest }) => {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
     path: "/*",
     element: <Error />
   },
+  {
+    path: "/search",
+    element: <Search />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

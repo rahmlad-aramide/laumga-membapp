@@ -53,7 +53,7 @@ const Dashboard = () => {
                 <div>{occupation ? occupation : <p>Not set, update details to set it</p>}</div>
               </div>
             </div>
-            <div className='mt-12 flex justify-end items-end'>
+            <div className='mt-12 mb-12 md:mb-0 flex justify-end items-end'>
               <Link to="/dashboard/details">
               <button className='bg-main text-white rounded-lg border border-main hover:scale-90 active:scale-100 transition duration-200 py-2 px-6 md:px-10'>
                 Update Details

@@ -3,6 +3,7 @@ import { Input, FileUploadInput } from '../../components';
 import { useState } from 'react';
 import Terms from './Terms';
 import { signUp } from '../../apis';
+import { useNavigate } from 'react-router-dom';
 
 const defaultFormFields = {
   sname: "",
@@ -19,25 +20,40 @@ const defaultFileFIelds = {
 }
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const [policy, setPolicy] = useState(false);
   const [selectedFile1, setSelectedFile1] = useState(null);
-  const [selectedFile2, setSelectedFile2] = useState(null);
+  // const [selectedFile2, setSelectedFile2] = useState(null);
   const [response, setResponse] = useState('');
-	const [error, setError] = useState('');
-	const [loading, setLoading] = useState(null);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(null);
 
   const handleFileUpload1 = (event) => {
     const file = event.target.files[0];
-    setSelectedFile1(file);
+    // setSelectedFile1(file);
+    // Check if a file is selected
+  if (file) {
+    const reader = new FileReader();
+
+    // Set the callback function to be executed once the file is loaded
+    reader.onload = function (event) {
+      const base64String = event.target.result;
+      // Use the base64 string as needed (e.g., send it to the server, display it on the page)
+      setSelectedFile1(base64String);
+    };
+
+    // Read the file as a data URL (base64)
+    reader.readAsDataURL(file);
+  }
     console.log(selectedFile1)
   };
 
-  const handleFileUpload2 = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile2(file);
-    console.log(selectedFile2)
-  };
+  // const handleFileUpload2 = (event) => {
+  //   const file = event.target.files[0];
+  //   setSelectedFile2(file);
+  //   console.log(selectedFile2)
+  // };
 
   const { sname, fname, matric, email, password, confirm_password } = formFields;
   const handleChange = (e) => {
@@ -47,48 +63,48 @@ const Signup = () => {
   }
 
   const handleSignupSubmit = async (event) => {
-		event.preventDefault();
+    event.preventDefault();
     const formData = {
       surname: formFields.sname,
       lastName: formFields.fname,
       email: formFields.email,
       matricNumber: formFields.matric,
       password: password,
-      // oldPicture: selectedFile1,
-      recentPicture: selectedFile2
-  }
+      recentPicture: selectedFile1
+      // oldPicture: selectedFile2,
+    }
 
-		setError('');
-		setLoading(true);
-		console.log(formData)
+    setError('');
+    setLoading(true);
+    console.log(formData)
 
-		try {
-			const res = await signUp(formData);
-			setResponse(res);
-			console.log(res)
+    try {
+      const res = await signUp(formData);
+      setResponse(res);
+      console.log(res)
 
-			setTimeout(() => {
-				navigate("/login");
-			}, 3000);
-			setLoading(false);
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+      setLoading(false);
 
-		} catch (err) {
-			setLoading(false);
-			setError(err);
-			console.log(err)
-		}
-	};
+    } catch (err) {
+      setLoading(false);
+      setError(err);
+      console.log(err)
+    }
+  };
 
   let theError, theResponse
-	// display error message component
-	if (error.message) {
-		theError = <p className='bg-red-200 p-4 md:p-8 border md:relative md:left-[50%] md:right-[50%] border-red-700 rounded-md text-red-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{error.message}. Please try again!</p>;
-	}
+  // display error message component
+  if (error.message) {
+    theError = <p className='bg-red-200 p-4 md:p-8 border md:relative md:left-[50%] md:right-[50%] border-red-700 rounded-md text-red-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{error.message}. Please try again!</p>;
+  }
 
-	// display success message component
-	if (response.message) {
-		theResponse = <p className='bg-green-200 p-4 md:p-8 border md:relative left-[50%] right-[50%] border-green-700 rounded-md text-green-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{response.message}. Please login!</p>;
-	}
+  // display success message component
+  if (response.message) {
+    theResponse = <p className='bg-green-200 p-4 md:p-8 border md:relative left-[50%] right-[50%] border-green-700 rounded-md text-green-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{response.message}. Please login!</p>;
+  }
 
 
   return (
@@ -105,13 +121,13 @@ const Signup = () => {
               <form onSubmit={handleSignupSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <span>{theError ? theError : null}</span> {/* DISPLAY ERROR MESSAGE */}
-					        <span>{theResponse ? theResponse : null}</span> {/* DISPLAY SUCCESS MESSAGE */}
+                  <span>{theResponse ? theResponse : null}</span> {/* DISPLAY SUCCESS MESSAGE */}
                   <div>
                     <label htmlFor="sname">Surname</label>
                     <Input py="12px" id="sname" type="text" name="sname" value={sname} onChange={handleChange} placeholder="Enter your surname here" required />
                   </div>
                   <div>
-                    <label htmlFor="fname">First Name</label>
+                    <label htmlFor="fname">Last Name</label>
                     <Input py="12px" id="fname" type="text" name="fname" value={fname} onChange={handleChange} placeholder="Enter your first name here" required />
                   </div>
                   <div>
@@ -131,13 +147,13 @@ const Signup = () => {
                     <Input py="12px" id="confirm_password" type="password" name="confirm_password" value={confirm_password} onChange={handleChange} placeholder="Confirm your password" required />
                   </div>
                   <div>
-                    <div>Old Passport</div>
+                    <div>Picture (max 100kb)</div>
                     <FileUploadInput selectedFile={selectedFile1} handleFileChange={handleFileUpload1} />
                   </div>
-                  <div>
+                  {/* <div>
                     <div>Recent Passport</div>
                     <FileUploadInput selectedFile={selectedFile2} handleFileChange={handleFileUpload2} />
-                  </div>
+                  </div> */}
                 </div>
                 <div className='flex justify-end items-end'>
                   <div className='mt-12 flex justify-end items-end'>

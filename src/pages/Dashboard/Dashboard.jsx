@@ -1,13 +1,14 @@
-import { Navbar, Footer } from '../../layouts/main';
+import { Navbar } from '../../layouts/main';
 import President from "../../assets/images/president.png";
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const email = localStorage.getItem("userEmail")
-	const firstName = localStorage.getItem("firstName")
+	const surname = localStorage.getItem("surname")
 	const lastName = localStorage.getItem("lastName")
 	const matricNumber = localStorage.getItem("matricNumber")
 	const occupation = localStorage.getItem("occupation")
+	const recentPicture = localStorage.getItem("recentPicture")
 
   return (
     <section>
@@ -17,7 +18,7 @@ const Dashboard = () => {
           <div className='flex justify-around gap-3 md:block'>
             <div className='flex flex-col ml-5 md:ml-0 md:mb-10'>
               <div className='mx-auto mb-4'>
-                <img src={President} alt="recent passport" className='rounded-full' />
+                <img src={recentPicture? recentPicture: President} alt="recent passport" className='rounded-full' />
               </div>
               <div className='mx-auto'>Recent Passport</div>
             </div>
@@ -37,7 +38,7 @@ const Dashboard = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 bg-white rounded-2xl md:w-[90%] mx-auto mt-8 shadow-lg px-5 md:px-7 py-6 md:py-10">
               <div>
                 <div className='font-normal sm:font-medium text-2xl'>Name</div>
-                <div>{firstName ? firstName + ' ' + lastName : <p>Not set</p>}</div>
+                <div>{surname ? surname + ' ' + lastName : <p>Not set</p>}</div>
               </div>
               <div>
                 <div className='font-normal sm:font-medium text-2xl'>Matric No</div>
@@ -62,7 +63,6 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </section>
   )
 }

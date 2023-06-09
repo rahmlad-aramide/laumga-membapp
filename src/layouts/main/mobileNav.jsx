@@ -28,9 +28,6 @@ export default function MobileNavbar() {
             <li>
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/">Home</NavLink>
             </li>
-            <li>
-                <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/about">About Us</NavLink>
-            </li>
             { userId ? <li>
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/dashboard">Dashboard</NavLink>
             </li> : ''}

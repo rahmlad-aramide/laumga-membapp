@@ -33,13 +33,15 @@ export default function LoginForm() {
 			setResponse(res);
 			const userId = res.result._id;
 			const userEmail = res.result.email;
-			const firstName = res.result.firstName;
+			const surname = res.result.surname;
 			const lastName = res.result.lastName;
+			const recentPicture = res.result.userDetails.recentPicture;
 
 			localStorage.setItem("userId", userId)
 			localStorage.setItem("userEmail", userEmail)
-			localStorage.setItem("firstName", firstName)
+			localStorage.setItem("surname", surname)
 			localStorage.setItem("lastName", lastName)
+			localStorage.setItem("recentPicture", recentPicture)
 			setLoading(false);
 
 			setTimeout(() => {

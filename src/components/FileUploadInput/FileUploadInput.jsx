@@ -1,5 +1,5 @@
 const FileUploadInput = ({selectedFile, handleFileChange}) => {
-
+  
   return (
     <div className="flex flex-col items-center justify-center mt-2">
       <label className="w-full flex flex-col items-center px-4 py-4 bg-[#f2f2f2] shadow tracking-wide cursor-pointer">
@@ -17,10 +17,10 @@ const FileUploadInput = ({selectedFile, handleFileChange}) => {
         </svg>
         <span className="font-mont font-medium mt-2 text-sm text-[#2d2d2d]/50 leading-normal">
           {selectedFile
-            ? selectedFile.name
+            ? "Image uploaded successfully"
             : "Click here or drop files to upload"}
         </span>
-        <input type="file" size="102400" accept=".jpg, .jpeg, .png" name="file" className="hidden" onChange={handleFileChange} />
+        <input type="file" size="102400" accept=".jpg, .jpeg, .png" name="file" className="hidden" onChange={handleFileChange} required />
       </label>
     </div>
   );

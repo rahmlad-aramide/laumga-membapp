@@ -100,7 +100,6 @@ const Details = () => {
     try {
       const res = await updateDetails(formData);
       setResponse(res);
-      console.log(res);
       setError('')
 
       const recentPicture = res.result.userDetails.recentPicture;
@@ -127,6 +126,7 @@ const Details = () => {
     } catch (error) {
       setLoading(false)
       setError(error)
+      warn("An error has occured")
       console.log("Inside error")
       console.error(error);
     }
@@ -179,11 +179,11 @@ const Details = () => {
               </div>
               {/* <br className="hidden md:flex" /> */}
               <div>
-                <div>Old Passport</div>
+                <div>Recent Passport</div>
                 <FileUploadInput selectedFile={selectedFile2} handleFileChange={handleFileUpload2} />
               </div>
               <div>
-                <div>Recent Passport</div>
+                <div>Old Passport</div>
                 <FileUploadInput selectedFile={selectedFile} handleFileChange={handleFileUpload1} />
               </div>
             </div>

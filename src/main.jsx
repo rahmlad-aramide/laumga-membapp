@@ -22,6 +22,19 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => {
   return <Component {...rest}/>;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
+const FreeRoute = ({ component: Component, ...rest }) => {
+  const userId = localStorage.getItem('userId');
+
+  if (userId) {
+    // Redirect the user to the login page
+    window.location.href = '/dashboard';
+    return null;
+  }
+
+  return <Component {...rest}/>;
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,11 +42,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />
+    element: <FreeRoute component={Login} />,
   },
   {
     path: "/signup",
-    element: <Signup />
+    element: <FreeRoute component={Signup} />,
   },
   {
     path: "/dashboard",

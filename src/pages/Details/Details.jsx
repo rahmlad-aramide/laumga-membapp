@@ -150,11 +150,11 @@ const Details = () => {
               </div>
               <div>
                 <label htmlFor="about">About</label>
-                <Input py="12px" id="about" type="text" name="about" value={about} onChange={handleChange} placeholder="Enter a brief description of you" />
+                <Input py="12px" id="about" type="text" name="about" value={about} onChange={handleChange} placeholder="Enter your short bio here" />
               </div>
               <div>
                 <label htmlFor="occupation">Occupation</label>
-                <Input py="12px" id="occupation" type="text" name="occupation" value={occupation} onChange={handleChange} placeholder="Enter your occupation here" />
+                <Input py="12px" id="occupation" type="text" name="occupation" value={occupation} onChange={handleChange} placeholder="Enter your occupation here" required />
               </div>
               <div>
                 <label htmlFor="location">Residential Address</label>

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { updateDetails } from '../../apis';
 import { useNavigate } from 'react-router-dom';
 import { Circles } from 'react-loader-spinner';
+
 const Loader = <Circles
   height="30"
   width="30"
@@ -179,11 +180,13 @@ const Details = () => {
             </div>
             <div className='flex'>
               <div className='mx-auto mt-12'>
-                <Link to="/dashboard">
-                  <button className='rounded-lg text-main bg-white border border-main hover:scale-90 active:scale-100 transition duration-200 py-2 px-6 md:px-10 mr-5'>
-                    Cancel
-                  </button>
-                </Link>
+                {loading ? "" :
+                  <Link to="/dashboard">
+                    <button className='rounded-lg text-main bg-white border border-main hover:scale-90 active:scale-100 transition duration-200 py-2 px-6 md:px-10 mr-5'>
+                      Cancel
+                    </button>
+                  </Link>
+                }
                 <button className='rounded-lg bg-main text-white border border-main hover:scale-90 active:scale-100 transition duration-200 py-2 px-6 md:px-10'>
                   {loading ? Loader : 'Save'}
                 </button>

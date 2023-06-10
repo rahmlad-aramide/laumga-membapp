@@ -7,14 +7,6 @@ export async function signUp(formData) {
   return new Promise((resolve, reject) => {
     axios
       .post(`${BASE_URL}/auth/signup`, formData)
-      // {
-      //   matricNumber,
-      //   firstName,
-      //   lastName,
-      //   email,
-      //   password,
-      //   recentPicture,
-      // })
       .then((response) => {
         resolve(response.data);
       })
@@ -45,6 +37,23 @@ export async function signIn(email, password) {
       .post(`${BASE_URL}/auth/signin`, {
         email,
         password,
+      })
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((err) => {
+        const errorMessage = err.response.data.message || err.message;
+        // console.log(err.response.data.message)
+        reject(new Error(errorMessage));
+      });
+  });
+}
+
+export async function getUser(id) {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${BASE_URL}/dashboard/getUser`, {
+        id
       })
       .then((response) => {
         resolve(response.data);

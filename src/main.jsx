@@ -5,8 +5,8 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/login";
 import Error from "./pages/Error/Error";
-import Search from "./pages/search/search";
 import { Dashboard, Details, Signup } from "./pages";
+import Members from "./pages/members/members";
 
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/members",
-    element: <AuthenticatedRoute component={Search} />
+    element: <AuthenticatedRoute component={Members} />
   }
 ]);
 

@@ -106,9 +106,8 @@ const Details = () => {
       console.log(recentPicture, oldPicture)
 
       localStorage.setItem("occupation", occupation)
-      localStorage.setItem("recentPicture", recentPicture)
-      localStorage.setItem("oldPicture", oldPicture)
-      console.log(res.message)
+      if(recentPicture) localStorage.setItem("recentPicture", recentPicture)
+      if(oldPicture) localStorage.setItem("oldPicture", oldPicture)
       setLoading(false)
       setTimeout(() => {
         navigate("/dashboard");

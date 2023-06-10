@@ -99,11 +99,11 @@ const Details = () => {
     try {
       const res = await updateDetails(formData);
       setResponse(res);
+      console.log(res);
       setError('')
 
       const recentPicture = res.result.userDetails.recentPicture;
       const oldPicture = res.result.userDetails.recentPicture;
-      console.log(recentPicture, oldPicture)
 
       localStorage.setItem("occupation", occupation)
       if(recentPicture) localStorage.setItem("recentPicture", recentPicture)

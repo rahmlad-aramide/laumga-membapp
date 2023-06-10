@@ -4,7 +4,10 @@ import { useState } from 'react';
 import Terms from './Terms';
 import { signUp } from '../../apis';
 import { useNavigate } from 'react-router-dom';
+import {ToastContainer} from "react-toastify"
+import {notify, warn} from '../../main'
 import { Circles } from 'react-loader-spinner';
+
 const Loader = <Circles
   height="30"
   width="30"
@@ -103,11 +106,13 @@ const Signup = () => {
   let theError, theResponse
   // display error message component
   if (error.message) {
+    warn(error.message)
     theError = <p className='bg-red-200 p-4 md:p-8 border md:relative md:left-[50%] md:right-[50%] border-red-700 rounded-md text-red-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{error.message}. Please try again!</p>;
   }
 
   // display success message component
   if (response.message) {
+    notify(response.message)
     theResponse = <p className='bg-green-200 p-4 md:p-8 border md:relative left-[50%] right-[50%] border-green-700 rounded-md text-green-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{response.message}. Please login!</p>;
   }
 
@@ -115,6 +120,7 @@ const Signup = () => {
   return (
     <section className='mt-20'>
       <Navbar />
+      <ToastContainer />
       <div>
         <div className="pt-5 mt-10 md:mt-20 pb-10 md:pb-20 bg-hero-image min-h-screen bg-center bg-black/50 font-mont">
           {policy ?

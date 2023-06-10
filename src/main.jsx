@@ -8,7 +8,7 @@ import Login from "./pages/login";
 // import Register from './pages/Signup';
 import Error from "./pages/Error/Error";
 import { Dashboard, Details, Signup } from "./pages";
-import Search from "./pages/search/search";
+import Members from "./pages/members/members";
 
 
 const AuthenticatedRoute = ({ component: Component, ...rest }) => {
@@ -57,8 +57,8 @@ const router = createBrowserRouter([
     element: <Error />
   },
   {
-    path: "/search",
-    element: <Search />
+    path: "/members",
+    element: <Members />
   }
 ]);
 

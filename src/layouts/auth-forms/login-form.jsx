@@ -79,7 +79,7 @@ export default function LoginForm() {
 
 	// display success message component
 	if (response.message) {
-		theResponse = <p className='bg-green-200 p-4 md:p-8 border border-green-700 rounded-md text-green-900 font-mont max-w-[350px] m-auto mb-2 text-center'>{response.message}!.</p>;
+		theResponse = <p className='bg-green-200 p-4 md:p-8 border border-green-700 rounded-md text-green-900 font-mont max-w-[350px] m-auto mb-2 text-center'>{response.message}, you&apos;ll be redirected shortly...</p>;
 	}
 
 	return (

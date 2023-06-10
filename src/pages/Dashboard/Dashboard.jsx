@@ -15,7 +15,7 @@ const Dashboard = () => {
   return (
     <section>
       <Navbar />
-      {!verified ?
+      {verified ?
         <div className="md:grid md:grid-cols-12 bg-hero-image min-h-screen bg-center bg-black/50 bg-blend-overlay font-mont">
           <div className='md:col-span-3 h-full bg-[#f4f4f4] pt-28 pb-5 md:pb-0 md:mr-10'>
             <div className='flex justify-around gap-3 md:block'>

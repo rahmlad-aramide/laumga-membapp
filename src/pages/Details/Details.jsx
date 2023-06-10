@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { updateDetails } from '../../apis';
 import { useNavigate } from 'react-router-dom';
+import {ToastContainer} from "react-toastify"
+import {notify, warn} from '../../main'
 import { Circles } from 'react-loader-spinner';
 
 const Loader = <Circles
@@ -103,11 +105,22 @@ const Details = () => {
       setError('')
 
       const recentPicture = res.result.userDetails.recentPicture;
-      const oldPicture = res.result.userDetails.recentPicture;
-
-      localStorage.setItem("occupation", occupation)
+      const oldPicture = res.result.userDetails.oldPicture;
+      const middleName = res.result.userDetails.middleName;
+      const occupation = res.result.userDetails.occupation;
+      const location = res.result.userDetails.location;
+      const number1 = res.result.userDetails.phoneNumber1;
+      const number2 = res.result.userDetails.phoneNumber2;
+      
+      if(occupation) localStorage.setItem("occupation", occupation)
       if(recentPicture) localStorage.setItem("recentPicture", recentPicture)
       if(oldPicture) localStorage.setItem("oldPicture", oldPicture)
+      if(middleName) localStorage.setItem("middleName", middleName)
+      if(location) localStorage.setItem("location", location)
+      if(about) localStorage.setItem("about", about)
+      if(number1) localStorage.setItem("number1", number1)
+      if(number2) localStorage.setItem("number2", number2)
+      
       setLoading(false)
       setTimeout(() => {
         navigate("/dashboard");
@@ -120,27 +133,25 @@ const Details = () => {
     }
   }
 
-  let theError, theResponse
-  // display error message component
-  if (error.message) {
-    theError = <p className='bg-red-200 p-4 md:p-8 border md:relative border-red-700 rounded-md text-red-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{error.message}. Please try again!</p>;
+   // display error message component
+   if (error.message) {
+    warn(`${error.message}. Pls try again.`)
   }
 
   // display success message component
   if (response.message) {
-    theResponse = <p className='bg-green-200 p-4 md:p-8 border md:relative border-green-700 rounded-md text-green-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{response.message}.</p>;
+    notify(`${response.message}, you're being redirected`)
   }
 
   return (
     <section>
       <Navbar />
+      <ToastContainer />
       <div className="pt-5 mt-10 md:mt-20 pb-10 md:pb-20 bg-hero-image min-h-screen bg-center bg-black/50 bg-blend-overlay font-mont">
         <div className="bg-white rounded-2xl w-[90%] md:w-[70%] max-w-[1088px] mx-auto mt-[102px] shadow-lg px-7 md:px-14 py-6 md:py-10">
           <div className="text-main font-mont font-medium text-4xl mb-5">
             Update Your Details
           </div>
-          <span>{theError ? theError : null}</span> {/* DISPLAY ERROR MESSAGE */}
-          <span>{theResponse ? theResponse : null}</span> {/* DISPLAY SUCCESS MESSAGE */}
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
@@ -153,7 +164,7 @@ const Details = () => {
               </div>
               <div>
                 <label htmlFor="occupation">Occupation</label>
-                <Input py="12px" id="occupation" type="text" name="occupation" value={occupation} onChange={handleChange} placeholder="Enter your occupation here" required />
+                <Input py="12px" id="occupation" type="text" name="occupation" value={occupation} onChange={handleChange} placeholder="Enter your occupation here" />
               </div>
               <div>
                 <label htmlFor="location">Residential Address</label>

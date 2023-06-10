@@ -20,7 +20,7 @@ const FileUploadInput = ({selectedFile, handleFileChange}) => {
             ? "Image uploaded successfully"
             : "Click here or drop files to upload"}
         </span>
-        <input type="file" size="102400" accept=".jpg, .jpeg, .png" name="file" className="hidden" onChange={handleFileChange} required />
+        <input type="file" size="102400" accept=".jpg, .jpeg, .png" name="file" className="hidden" onChange={handleFileChange} />
       </label>
     </div>
   );

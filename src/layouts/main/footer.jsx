@@ -17,6 +17,7 @@ export default function Footer() {
                     <Link to="/"><li>Home</li></Link>
                     {userId && <Link to="/dashboard"><li>Dashboard</li></Link>}
                     <Link to="/news"><li>News</li></Link>
+                    <Link to="/members"><li>Members</li></Link>
                 </ul>
             </div>
             {!userId &&

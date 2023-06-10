@@ -10,6 +10,7 @@ export default {
       backgroundImage: {
         "hero-image": "url('./assets/images/hero-image.jpg')",
         "login-image": "url('./assets/images/login-bg.png')",
+        "review-image": "url('./assets/images/review-image.jpg')",
       },
       fontFamily: {
         mont: ["Montserrat", "sans-serif"],

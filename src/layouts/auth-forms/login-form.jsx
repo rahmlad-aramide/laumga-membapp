@@ -2,24 +2,16 @@ import { useState } from "react";
 import { signIn } from "../../apis/index";
 import { useNavigate } from "react-router-dom";
 import { Circles } from 'react-loader-spinner';
+
 const loader = <Circles
-height="25"
-width="25"
+height="30"
+width="30"
 color="#fff"
 ariaLabel="circles-loading"
 wrapperStyle={{}}
 wrapperClass=""
 visible={true}
 />
-{/* <Audio
-  height="80"
-  width="80"
-  radius="9"
-  color="green"
-  ariaLabel="loading"
-  wrapperStyle
-  wrapperClass
-/> */}
 
 export default function LoginForm() {
 
@@ -52,6 +44,7 @@ export default function LoginForm() {
 			setResponse(res);
 			console.log(res);
 			const userId = res.result._id;
+			const verified = res.result.verified;
 			const userEmail = res.result.email;
 			const surname = res.result.surname;
 			const lastName = res.result.lastName;
@@ -59,6 +52,7 @@ export default function LoginForm() {
 			const recentPicture = res.result.userDetails.recentPicture;
 
 			localStorage.setItem("userId", userId)
+			localStorage.setItem("verified", verified)
 			localStorage.setItem("userEmail", userEmail)
 			localStorage.setItem("surname", surname)
 			localStorage.setItem("lastName", lastName)
@@ -99,10 +93,10 @@ export default function LoginForm() {
 					<span>{theResponse ? theResponse : null}</span> {/* DISPLAY SUCCESS MESSAGE */}
 					{/* EMAIL INPUT */}
 					<label htmlFor="email" className="text-black">Email</label>
-					<input type="email" value={email} placeholder="Enter email address" onChange={handleEmailChange} className="mt-3 bg-form_bg rounded-md outline-none p-3 md:p-4 mb-3" />
+					<input type="email" value={email} placeholder="Enter email address" onChange={handleEmailChange} required className="mt-3 bg-form_bg rounded-md outline-none p-3 md:p-4 mb-3" />
 					{/* PASSWORD INPUT */}
 					<label htmlFor="password" className="text-black">Password</label>
-					<input type="password" value={password} placeholder="Enter password" onChange={handlePasswordChange} className="mt-3 bg-form_bg rounded-md outline-none p-3 md:p-4 mb-3" />
+					<input type="password" value={password} placeholder="Enter password" onChange={handlePasswordChange} required className="mt-3 bg-form_bg rounded-md outline-none p-3 md:p-4 mb-3" />
 					<p className=" text-center text-main underline">Forgot Password?</p>
 					<button type="submit" className=" bg-main font-mont w-full mb-6 m-auto rounded-md mt-6 text-white">{loading ? <p className="p-4 flex justify-center">{loader}</p> : <p className=" p-4">Login</p>}</button>
 				</form>

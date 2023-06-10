@@ -25,13 +25,16 @@ export default function MobileNavbar() {
 
     let nav
     nav = <ul className={`navbar-menu ${isOpen ? 'open' : ''} bg-white p-10 text-left text-[20px] min-w-[250px] h-[100vh] absolute top-[3.5rem] right-[-20px]`}>
-            <li>
+            <li className="mb-3">
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/">Home</NavLink>
             </li>
-            { userId ? <li>
+            <li className="mb-3">
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/dashboard">Dashboard</NavLink>
-            </li> : ''}
-            <li>
+            </li>
+            <li className="mb-3">
+                <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/members">Members</NavLink>
+            </li>
+            <li className="mb-3">
                 <NavLink className={({ isActive }) => isActive ? "text-main active:opacity-50 hover:underline" : "hover:underline"} to="/news">News</NavLink>
             </li>
             <div className="flex flex-col gap-5 mt-10 text-center">

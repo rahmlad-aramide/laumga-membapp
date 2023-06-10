@@ -63,6 +63,7 @@ const Signup = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
+    setMatched(null)
   }
   const handleSignupSubmit = async (event) => {
     event.preventDefault();
@@ -82,7 +83,6 @@ const Signup = () => {
     }
     setError('');
     setLoading(true);
-    // console.log(formData)
 
     try {
       const res = await signUp(formData);

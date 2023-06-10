@@ -86,8 +86,8 @@ const Details = () => {
 
     const formData = {
       id: userId,
-      recentPicture: selectedFile2,
-      oldPicture: selectedFile,
+      recentPicture: selectedFile,
+      oldPicture: selectedFile2,
       location: formFields.address,
       occupation: formFields.occupation,
       phoneNumber1: formFields.phoneNo1,
@@ -145,28 +145,28 @@ const Details = () => {
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <label htmlFor="name">Name</label>
-                <Input py="12px" id="name" type="text" name="name" value={name} onChange={handleChange} placeholder="Enter your full name here" required />
+                <label htmlFor="name">Middle Name</label>
+                <Input py="12px" id="name" type="text" name="name" value={name} onChange={handleChange} placeholder="Enter your middle name here" />
               </div>
               <div>
                 <label htmlFor="about">About</label>
-                <Input py="12px" id="about" type="text" name="about" value={about} onChange={handleChange} placeholder="Enter a brief description of you" required />
+                <Input py="12px" id="about" type="text" name="about" value={about} onChange={handleChange} placeholder="Enter a brief description of you" />
               </div>
               <div>
                 <label htmlFor="occupation">Occupation</label>
-                <Input py="12px" id="occupation" type="text" name="occupation" value={occupation} onChange={handleChange} placeholder="Enter your occupation here" required />
+                <Input py="12px" id="occupation" type="text" name="occupation" value={occupation} onChange={handleChange} placeholder="Enter your occupation here" />
               </div>
               <div>
                 <label htmlFor="location">Residential Address</label>
-                <Input py="12px" id="location" type="text" name="location" value={location} onChange={handleChange} placeholder="Enter your permanent address here" required />
+                <Input py="12px" id="location" type="text" name="location" value={location} onChange={handleChange} placeholder="Enter your permanent address here" />
               </div>
               <div>
                 <label htmlFor="phoneNo1">Phone number one</label>
-                <Input py="12px" id="phoneNo1" type="text" name="phoneNo1" value={phoneNo1} onChange={handleChange} placeholder="Enter your phone number here" required />
+                <Input py="12px" id="phoneNo1" type="text" name="phoneNo1" value={phoneNo1} onChange={handleChange} placeholder="Enter your phone number here" />
               </div>
               <div>
                 <label htmlFor="phoneNo2">Phone number two</label>
-                <Input py="12px" id="phoneNo2" type="text" name="phoneNo2" value={phoneNo2} onChange={handleChange} placeholder="Enter your second phone number" required />
+                <Input py="12px" id="phoneNo2" type="text" name="phoneNo2" value={phoneNo2} onChange={handleChange} placeholder="Enter your second phone number" />
               </div>
               {/* <br className="hidden md:flex" /> */}
               <div>

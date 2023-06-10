@@ -73,9 +73,8 @@ const Signup = () => {
       lastName: formFields.fname,
       email: formFields.email,
       matricNumber: formFields.matric,
-      password: password,
+      password: formFields.password,
       recentPicture: selectedFile1
-      // oldPicture: selectedFile2,
     }
     if (password !== confirm_password) {
       setMatched(false)
@@ -119,7 +118,6 @@ const Signup = () => {
       <div>
         <div className="pt-5 mt-10 md:mt-20 pb-10 md:pb-20 bg-hero-image min-h-screen bg-center bg-black/50 font-mont">
           {policy ?
-
             <div className="bg-white rounded-2xl w-[90%] md:w-[70%] max-w-[1088px] mx-auto mt-[102px] shadow-lg px-7 md:px-14 py-6 md:py-10">
               <div className="text-main font-mont font-medium text-4xl mb-5">
                 Signup
@@ -133,7 +131,7 @@ const Signup = () => {
                     <Input py="12px" id="sname" type="text" name="sname" value={sname} onChange={handleChange} placeholder="Enter your surname here" required />
                   </div>
                   <div>
-                    <label htmlFor="fname">Last Name</label>
+                    <label htmlFor="fname">First Name</label>
                     <Input py="12px" id="fname" type="text" name="fname" value={fname} onChange={handleChange} placeholder="Enter your first name here" required />
                   </div>
                   <div>

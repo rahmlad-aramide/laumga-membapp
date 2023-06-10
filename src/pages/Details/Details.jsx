@@ -44,7 +44,6 @@ const Details = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
-    console.log(formFields)
   }
 
 
@@ -181,11 +180,11 @@ const Details = () => {
               {/* <br className="hidden md:flex" /> */}
               <div>
                 <div>Old Passport</div>
-                <FileUploadInput selectedFile={selectedFile} handleFileChange={handleFileUpload1} />
+                <FileUploadInput selectedFile={selectedFile2} handleFileChange={handleFileUpload2} />
               </div>
               <div>
                 <div>Recent Passport</div>
-                <FileUploadInput selectedFile={selectedFile2} handleFileChange={handleFileUpload2} />
+                <FileUploadInput selectedFile={selectedFile} handleFileChange={handleFileUpload1} />
               </div>
             </div>
             <div className='flex'>

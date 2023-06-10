@@ -4,13 +4,12 @@ import { Home, News } from "./pages";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/login";
-// import Register from "./pages/register";
-// import Register from './pages/Signup';
 import Error from "./pages/Error/Error";
-import { Dashboard, Details, Signup } from "./pages";
 import Search from "./pages/search/search";
+import { Dashboard, Details, Signup } from "./pages";
 
 
+// eslint-disable-next-line react-refresh/only-export-components
 const AuthenticatedRoute = ({ component: Component, ...rest }) => {
   const userId = localStorage.getItem('userId');
 
@@ -32,10 +31,6 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />
   },
-  // {
-  //   path: "/register",
-  //   element: <Register />
-  // },
   {
     path: "/signup",
     element: <Signup />
@@ -46,7 +41,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard/details",
-    element: <Details />
+    element: <AuthenticatedRoute component={Details} />,
   },
   {
     path: "/news",
@@ -57,8 +52,8 @@ const router = createBrowserRouter([
     element: <Error />
   },
   {
-    path: "/search",
-    element: <Search />
+    path: "/members",
+    element: <AuthenticatedRoute component={Search} />
   }
 ]);
 

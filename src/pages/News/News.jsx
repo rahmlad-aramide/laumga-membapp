@@ -8,7 +8,7 @@ const News = () => {
       <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-main mb-8">
         Coming Soon!
       </h1>
-      <p className="text-lg text-gray-600 mb-12">
+      <p className="text-lg text-gray-600 mb-12 px-4 text-center">
         We&rsquo;re currently working hard to bring this page to life.
       </p>
       <Link to="/">

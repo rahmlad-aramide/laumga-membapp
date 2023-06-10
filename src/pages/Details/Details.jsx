@@ -4,7 +4,16 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { updateDetails } from '../../apis';
 import { useNavigate } from 'react-router-dom';
-
+import { Circles } from 'react-loader-spinner';
+const Loader = <Circles
+  height="30"
+  width="30"
+  color="#fff"
+  ariaLabel="circles-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/>
 const defaultFormFields = {
   name: "",
   about: "",
@@ -27,8 +36,8 @@ const Details = () => {
   const [response, setResponse] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(null);
-  
-  const {name, about, location, occupation, phoneNo1, phoneNo2} = formFields;
+
+  const { name, about, location, occupation, phoneNo1, phoneNo2 } = formFields;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
@@ -47,9 +56,10 @@ const Details = () => {
         // Use the base64 string as needed (e.g., send it to the server, display it on the page)
         setSelectedFile(base64String);
       };
-    // Read the file as a data URL (base64)
-    reader.readAsDataURL(file);
-  }}
+      // Read the file as a data URL (base64)
+      reader.readAsDataURL(file);
+    }
+  }
 
   const handleFileUpload2 = (event) => {
     const file = event.target.files[0];
@@ -62,9 +72,10 @@ const Details = () => {
         // Use the base64 string as needed (e.g., send it to the server, display it on the page)
         setSelectedFile2(base64String);
       };
-    // Read the file as a data URL (base64)
-    reader.readAsDataURL(file);
-  }}
+      // Read the file as a data URL (base64)
+      reader.readAsDataURL(file);
+    }
+  }
 
   const navigate = useNavigate();
 
@@ -85,27 +96,27 @@ const Details = () => {
     }
 
     try {
-        const res = await updateDetails(formData);
-        setResponse(res);
-        setError('')
+      const res = await updateDetails(formData);
+      setResponse(res);
+      setError('')
 
-        const recentPicture = res.result.userDetails.recentPicture;
-        const oldPicture = res.result.userDetails.recentPicture;
-        console.log(recentPicture, oldPicture)
+      const recentPicture = res.result.userDetails.recentPicture;
+      const oldPicture = res.result.userDetails.recentPicture;
+      console.log(recentPicture, oldPicture)
 
-        localStorage.setItem("occupation", occupation)
-        localStorage.setItem("recentPicture", recentPicture)
-        localStorage.setItem("oldPicture", oldPicture)
-        console.log(res.message)
-        setLoading(false)
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 3000);
+      localStorage.setItem("occupation", occupation)
+      localStorage.setItem("recentPicture", recentPicture)
+      localStorage.setItem("oldPicture", oldPicture)
+      console.log(res.message)
+      setLoading(false)
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 3000);
     } catch (error) {
-        setLoading(false)
-        setError(error)
-        console.log("Inside error")
-        console.error(error);
+      setLoading(false)
+      setError(error)
+      console.log("Inside error")
+      console.error(error);
     }
   }
 
@@ -169,12 +180,12 @@ const Details = () => {
             <div className='flex'>
               <div className='mx-auto mt-12'>
                 <Link to="/dashboard">
-                <button className='rounded-lg text-main bg-white border border-main hover:scale-90 active:scale-100 transition duration-200 py-2 px-6 md:px-10 mr-5'>
-                  Cancel
-                </button>
+                  <button className='rounded-lg text-main bg-white border border-main hover:scale-90 active:scale-100 transition duration-200 py-2 px-6 md:px-10 mr-5'>
+                    Cancel
+                  </button>
                 </Link>
                 <button className='rounded-lg bg-main text-white border border-main hover:scale-90 active:scale-100 transition duration-200 py-2 px-6 md:px-10'>
-                  {loading ? 'Loading...' : 'Save'}
+                  {loading ? Loader : 'Save'}
                 </button>
               </div>
             </div>

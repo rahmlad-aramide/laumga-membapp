@@ -4,7 +4,16 @@ import { useState } from 'react';
 import Terms from './Terms';
 import { signUp } from '../../apis';
 import { useNavigate } from 'react-router-dom';
-
+import { Circles } from 'react-loader-spinner';
+const Loader = <Circles
+  height="30"
+  width="30"
+  color="#fff"
+  ariaLabel="circles-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/>
 const defaultFormFields = {
   sname: "",
   fname: "",
@@ -33,19 +42,19 @@ const Signup = () => {
     const file = event.target.files[0];
     // setSelectedFile1(file);
     // Check if a file is selected
-  if (file) {
-    const reader = new FileReader();
+    if (file) {
+      const reader = new FileReader();
 
-    // Set the callback function to be executed once the file is loaded
-    reader.onload = function (event) {
-      const base64String = event.target.result;
-      // Use the base64 string as needed (e.g., send it to the server, display it on the page)
-      setSelectedFile1(base64String);
-    };
+      // Set the callback function to be executed once the file is loaded
+      reader.onload = function (event) {
+        const base64String = event.target.result;
+        // Use the base64 string as needed (e.g., send it to the server, display it on the page)
+        setSelectedFile1(base64String);
+      };
 
-    // Read the file as a data URL (base64)
-    reader.readAsDataURL(file);
-  }
+      // Read the file as a data URL (base64)
+      reader.readAsDataURL(file);
+    }
     console.log(selectedFile1)
   };
 
@@ -158,7 +167,7 @@ const Signup = () => {
                 <div className='flex justify-end items-end'>
                   <div className='mt-12 flex justify-end items-end'>
                     <button className='bg-main text-white rounded-lg border border-main hover:scale-90 active:scale-100 transition duration-200 py-2 px-6 md:px-10'>
-                      {loading ? <p>Loading...</p> : <p>Signup</p>}
+                      {loading ? <p>{Loader} </p> : <p>Signup</p>}
                     </button>
                   </div>
                 </div>

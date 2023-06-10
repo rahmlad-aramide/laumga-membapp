@@ -2,6 +2,7 @@ import {React, useState} from "react";
 import axios from "axios";
 import { Footer, Navbar } from "../../layouts/main";
 import President from "../../assets/images/president.png";
+import search from "../../assets/search.svg"
 
 export default function Members() {
     const recentPicture = localStorage.getItem("recentPicture")
@@ -59,9 +60,9 @@ export default function Members() {
                     </div>
                     <div className='col-span-9'>
                         <div className="w-[90%] ml-[10%] mr-[10%] md:mx-auto mt-[50px] md:mt-[150px] py-6 md:py-10">
-                            <form onSubmit={handleSearch} action="" className="bg-white max-w-max rounded-lg">
+                            <form onSubmit={handleSearch} action="" className="bg-white max-w-max rounded-lg flex items-center">
                                 <input type="search" placeholder="Search" value={searchTerm} onChange={handleSearchChange} className="p-5 rounded-3xl w-[250px] md:w-[500px] outline-none"/>
-                                <button type="submit" className="mr-5">Search</button>
+                                <button type="submit" className="mr-5"><img src={search} alt="search" /></button>
                             </form>
                             <ul className="flex flex-wrap gap-20 mt-10">
                                 {searchResults ? searchResults.map((result) => (

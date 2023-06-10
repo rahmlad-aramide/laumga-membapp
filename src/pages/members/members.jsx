@@ -1,9 +1,39 @@
-import React from "react";
+import {React, useState} from "react";
+import axios from "axios";
 import { Footer, Navbar } from "../../layouts/main";
 import President from "../../assets/images/president.png";
 
-export default function Search() {
+export default function Members() {
     const recentPicture = localStorage.getItem("recentPicture")
+
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+
+    const handleSearchChange = (event) => {
+		setSearchTerm(event.target.value);
+	};
+
+    const handleSearch = async (event) => {
+        event.preventDefault()
+        // const { value } = event.target;
+        // setSearchTerm(value);
+
+        const formData = {
+            lastName: searchTerm
+        }
+        console.log("Inside on change", searchTerm)
+    
+        try {
+            console.log("Before response")
+            const response = await axios.post("https://laumga-membapp-api.onrender.com/dashboard/search", formData);
+            console.log("Inside response")
+            setSearchResults(response);
+            console.log(response)
+        } catch (error) {
+            console.log("Inside error")
+            console.error(error);
+        }
+    };
 
     return (
         <>
@@ -28,11 +58,23 @@ export default function Search() {
                     </div>
                     <div className='col-span-9'>
                         <div className="w-[90%] ml-[10%] mr-[10%] md:mx-auto mt-[50px] md:mt-[150px] py-6 md:py-10">
-                            <form action="">
-                                <input type="search" placeholder="Search" className="p-5 rounded-3xl w-[250px] md:w-[500px] outline-none"/>
+                            <form onSubmit={handleSearch} action="">
+                                <input type="search" placeholder="Search" value={searchTerm} onChange={handleSearchChange} className="p-5 rounded-3xl w-[250px] md:w-[500px] outline-none"/>
+                                {/* <button type="submit">Search</button> */}
                             </form>
-                            <div className="flex flex-wrap gap-20 mt-10">
-                                <div className=" bg-form_bg break-words rounded-xl max-w-[285px] text-center p-10">
+                            <ul className="flex flex-wrap gap-20 mt-10">
+                                {searchResults.map((result) => (
+                                    <li key={result._id}>
+                                        <div className=" bg-form_bg break-words rounded-xl max-w-[285px] text-center p-10">
+                                            <img src={President} alt="user image" width={150} className="rounded-full mx-auto" />
+                                            <p className="mt-5">{result.firstName + ' ' + result.lastName}</p>
+                                            <p><span className="font-semibold">Location: </span>Lagos, Nigeria</p>
+                                            <p><span className="font-semibold">Email: </span>abdularahmanhak@gmail.com</p>
+                                            <p><span className="font-semibold">Phone: </span>08166223687</p>
+                                        </div>
+                                    </li>
+                                ))}
+                                {/* <div className=" bg-form_bg break-words rounded-xl max-w-[285px] text-center p-10">
                                     <img src={President} alt="user image" width={150} className="rounded-full mx-auto" />
                                     <p className="mt-5">Abdulrahman Hakeem</p>
                                     <p><span className="font-semibold">Location: </span>Lagos, Nigeria</p>
@@ -59,15 +101,8 @@ export default function Search() {
                                     <p><span className="font-semibold">Location: </span>Lagos, Nigeria</p>
                                     <p><span className="font-semibold">Email: </span>abdularahmanhak@gmail.com</p>
                                     <p><span className="font-semibold">Phone: </span>08166223687</p>
-                                </div>
-                                <div className=" bg-form_bg break-words rounded-xl max-w-[285px] text-center p-10">
-                                    <img src={President} alt="user image" width={150} className="rounded-full mx-auto" />
-                                    <p className="mt-5">Abdulrahman Hakeem</p>
-                                    <p><span className="font-semibold">Location: </span>Lagos, Nigeria</p>
-                                    <p><span className="font-semibold">Email: </span>abdularahmanhak@gmail.com</p>
-                                    <p><span className="font-semibold">Phone: </span>08166223687</p>
-                                </div>
-                            </div>
+                                </div> */}
+                            </ul>
                         </div>
                         
                         <div></div>

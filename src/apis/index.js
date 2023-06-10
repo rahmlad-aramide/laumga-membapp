@@ -25,6 +25,20 @@ export async function signUp(formData) {
   });
 }
 
+export async function updateDetails(formData) {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${BASE_URL}/dashboard/update`, formData)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((err) => {
+        const errorMessage = err.response.data.message || err.message;
+        reject(new Error(errorMessage));
+      });
+  });
+}
+
 export async function signIn(email, password) {
   return new Promise((resolve, reject) => {
     axios

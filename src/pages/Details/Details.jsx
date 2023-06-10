@@ -2,16 +2,16 @@ import { Navbar, Footer } from '../../layouts/main';
 import { Input, FileUploadInput } from '../../components';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { updateDetails } from '../../apis';
+import { useNavigate } from 'react-router-dom';
 
 const defaultFormFields = {
   name: "",
-  matric: "",
-  email: "",
+  about: "",
+  location: "",
   occupation: "",
-  address: "",
-  residential: "",
-  password: "",
-  confirm_password: ""
+  phoneNo1: "",
+  phoneNo2: "",
 }
 // eslint-disable-next-line no-unused-vars
 const defaultFileFIelds = {
@@ -20,10 +20,15 @@ const defaultFileFIelds = {
 }
 
 const Details = () => {
+  const userId = localStorage.getItem("userId")
   const [formFields, setFormFields] = useState(defaultFormFields);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile2, setSelectedFile2] = useState(null);
+  const [response, setResponse] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(null);
   
-  const {name, matric, occupation, address, residential} = formFields;
+  const {name, about, location, occupation, phoneNo1, phoneNo2} = formFields;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
@@ -31,13 +36,89 @@ const Details = () => {
   }
 
 
-  const handleFileChange = (event) => {
-    console.log(event.target)
+  const handleFileUpload1 = (event) => {
     const file = event.target.files[0];
-    setSelectedFile(file);
-    console.log(file);
-    console.log(selectedFile);
-  };
+    // Check if a file is selected
+    if (file) {
+      const reader = new FileReader();
+      // Set the callback function to be executed once the file is loaded
+      reader.onload = function (event) {
+        const base64String = event.target.result;
+        // Use the base64 string as needed (e.g., send it to the server, display it on the page)
+        setSelectedFile(base64String);
+      };
+    // Read the file as a data URL (base64)
+    reader.readAsDataURL(file);
+  }}
+
+  const handleFileUpload2 = (event) => {
+    const file = event.target.files[0];
+    // Check if a file is selected
+    if (file) {
+      const reader = new FileReader();
+      // Set the callback function to be executed once the file is loaded
+      reader.onload = function (event) {
+        const base64String = event.target.result;
+        // Use the base64 string as needed (e.g., send it to the server, display it on the page)
+        setSelectedFile2(base64String);
+      };
+    // Read the file as a data URL (base64)
+    reader.readAsDataURL(file);
+  }}
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    setLoading(true)
+
+    const formData = {
+      id: userId,
+      recentPicture: selectedFile2,
+      oldPicture: selectedFile,
+      location: formFields.address,
+      occupation: formFields.occupation,
+      phoneNumber1: formFields.phoneNo1,
+      phoneNumber2: formFields.phoneNo2,
+      about: formFields.about,
+      middleName: formFields.name,
+    }
+
+    try {
+        const res = await updateDetails(formData);
+        setResponse(res);
+        setError('')
+
+        const recentPicture = res.result.userDetails.recentPicture;
+        const oldPicture = res.result.userDetails.recentPicture;
+        console.log(recentPicture, oldPicture)
+
+        localStorage.setItem("occupation", occupation)
+        localStorage.setItem("recentPicture", recentPicture)
+        localStorage.setItem("oldPicture", oldPicture)
+        console.log(res.message)
+        setLoading(false)
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 3000);
+    } catch (error) {
+        setLoading(false)
+        setError(error)
+        console.log("Inside error")
+        console.error(error);
+    }
+  }
+
+  let theError, theResponse
+  // display error message component
+  if (error.message) {
+    theError = <p className='bg-red-200 p-4 md:p-8 border md:relative border-red-700 rounded-md text-red-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{error.message}. Please try again!</p>;
+  }
+
+  // display success message component
+  if (response.message) {
+    theResponse = <p className='bg-green-200 p-4 md:p-8 border md:relative border-green-700 rounded-md text-green-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{response.message}.</p>;
+  }
 
   return (
     <section>
@@ -47,36 +128,42 @@ const Details = () => {
           <div className="text-main font-mont font-medium text-4xl mb-5">
             Update Your Details
           </div>
-          <form>
+          <span>{theError ? theError : null}</span> {/* DISPLAY ERROR MESSAGE */}
+          <span>{theResponse ? theResponse : null}</span> {/* DISPLAY SUCCESS MESSAGE */}
+          <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <label htmlFor="name">Name</label>
                 <Input py="12px" id="name" type="text" name="name" value={name} onChange={handleChange} placeholder="Enter your full name here" required />
               </div>
               <div>
-                <label htmlFor="matric">Matric No</label>
-                <Input py="12px" id="matric" type="text" name="matric" value={matric} onChange={handleChange} placeholder="Enter your matric number here" required />
+                <label htmlFor="about">About</label>
+                <Input py="12px" id="about" type="text" name="about" value={about} onChange={handleChange} placeholder="Enter a brief description of you" required />
               </div>
               <div>
                 <label htmlFor="occupation">Occupation</label>
                 <Input py="12px" id="occupation" type="text" name="occupation" value={occupation} onChange={handleChange} placeholder="Enter your occupation here" required />
               </div>
               <div>
-                <label htmlFor="address">Permanent Address</label>
-                <Input py="12px" id="address" type="text" name="address" value={address} onChange={handleChange} placeholder="Enter your permanent address here" required />
+                <label htmlFor="location">Residential Address</label>
+                <Input py="12px" id="location" type="text" name="location" value={location} onChange={handleChange} placeholder="Enter your permanent address here" required />
               </div>
               <div>
-                <label htmlFor="residential">Residential Address</label>
-                <Input py="12px" id="residential" type="text" name="residential" value={residential} onChange={handleChange} placeholder="Enter your residential address here" required />
+                <label htmlFor="phoneNo1">Phone number one</label>
+                <Input py="12px" id="phoneNo1" type="text" name="phoneNo1" value={phoneNo1} onChange={handleChange} placeholder="Enter your phone number here" required />
               </div>
-              <br className="hidden md:flex" />
+              <div>
+                <label htmlFor="phoneNo2">Phone number two</label>
+                <Input py="12px" id="phoneNo2" type="text" name="phoneNo2" value={phoneNo2} onChange={handleChange} placeholder="Enter your second phone number" required />
+              </div>
+              {/* <br className="hidden md:flex" /> */}
               <div>
                 <div>Old Passport</div>
-                <FileUploadInput selectedFile={selectedFile} handleFileChange={handleFileChange} />
+                <FileUploadInput selectedFile={selectedFile} handleFileChange={handleFileUpload1} />
               </div>
               <div>
                 <div>Recent Passport</div>
-                <FileUploadInput selectedFile={selectedFile} handleFileChange={handleFileChange} />
+                <FileUploadInput selectedFile={selectedFile2} handleFileChange={handleFileUpload2} />
               </div>
             </div>
             <div className='flex'>
@@ -87,7 +174,7 @@ const Details = () => {
                 </button>
                 </Link>
                 <button className='rounded-lg bg-main text-white border border-main hover:scale-90 active:scale-100 transition duration-200 py-2 px-6 md:px-10'>
-                  Save
+                  {loading ? 'Loading...' : 'Save'}
                 </button>
               </div>
             </div>

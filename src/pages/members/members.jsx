@@ -2,9 +2,11 @@ import {React, useState} from "react";
 import axios from "axios";
 import { Footer, Navbar } from "../../layouts/main";
 import President from "../../assets/images/president.png";
+import search from "../../assets/search.svg"
 
 export default function Members() {
     const recentPicture = localStorage.getItem("recentPicture")
+    const oldPicture = localStorage.getItem("oldPicture")
 
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -27,8 +29,8 @@ export default function Members() {
             console.log("Before response")
             const response = await axios.post("https://laumga-membapp-api.onrender.com/dashboard/search", formData);
             console.log("Inside response")
-            setSearchResults(response);
-            console.log(response)
+            setSearchResults(response.search);
+            console.log(response.search)
         } catch (error) {
             console.log("Inside error")
             console.error(error);
@@ -44,13 +46,13 @@ export default function Members() {
                         <div className='flex justify-around gap-3 md:block'>
                             <div className='flex flex-col ml-5 md:ml-0 md:mb-10'>
                                 <div className='mx-auto mb-4'>
-                                    <img src={recentPicture? recentPicture: President} alt="recent passport" className='rounded-full' />
+                                    <img src={recentPicture? recentPicture: President} alt="recent passport" className='rounded-full max-w-[300px]' />
                                 </div>
                                 <div className='mx-auto'>Recent Passport</div>
                             </div>
                             <div className='flex flex-col mr-3 md:mr-0'>
                                 <div className='mx-auto mb-4'>
-                                    <img src={President} alt="old passport" className='rounded-full' />
+                                    <img src={oldPicture? oldPicture: President} alt="old passport" className='rounded-full max-w-[300px]' />
                                 </div>
                                 <div className='mx-auto'>Old Passport</div>
                             </div>
@@ -58,12 +60,12 @@ export default function Members() {
                     </div>
                     <div className='col-span-9'>
                         <div className="w-[90%] ml-[10%] mr-[10%] md:mx-auto mt-[50px] md:mt-[150px] py-6 md:py-10">
-                            <form onSubmit={handleSearch} action="">
+                            <form onSubmit={handleSearch} action="" className="bg-white max-w-max rounded-lg flex items-center">
                                 <input type="search" placeholder="Search" value={searchTerm} onChange={handleSearchChange} className="p-5 rounded-3xl w-[250px] md:w-[500px] outline-none"/>
-                                {/* <button type="submit">Search</button> */}
+                                <button type="submit" className="mr-5"><img src={search} alt="search" /></button>
                             </form>
                             <ul className="flex flex-wrap gap-20 mt-10">
-                                {searchResults.map((result) => (
+                                {searchResults ? searchResults.map((result) => (
                                     <li key={result._id}>
                                         <div className=" bg-form_bg break-words rounded-xl max-w-[285px] text-center p-10">
                                             <img src={President} alt="user image" width={150} className="rounded-full mx-auto" />
@@ -73,7 +75,7 @@ export default function Members() {
                                             <p><span className="font-semibold">Phone: </span>08166223687</p>
                                         </div>
                                     </li>
-                                ))}
+                                )) : <p className="text-white text-[15px] md:text-[30px]">No result(s) found</p>}
                                 {/* <div className=" bg-form_bg break-words rounded-xl max-w-[285px] text-center p-10">
                                     <img src={President} alt="user image" width={150} className="rounded-full mx-auto" />
                                     <p className="mt-5">Abdulrahman Hakeem</p>

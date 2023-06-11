@@ -36,6 +36,9 @@ export default function Members() {
         event.preventDefault()
         setLoading(true)
         
+        if (selectedOption == '') {
+            setSelectedOption("lastName")
+        }
         const formData = {
             [selectedOption]: searchTerm
         }
@@ -74,7 +77,7 @@ export default function Members() {
                         </div>
                     </div> */}
                     <div className="w-[100%] pt-[150px] md:pt-0 m-auto">
-                        <div className="w-[90%] md:w-[50%] md:mx-auto mt-[50px] md:mt-[150px] m-auto py-6 md:py-10">
+                        <div className="w-[90%] md:w-[40%] md:mx-auto mt-[50px] md:mt-[150px] m-auto py-6 md:py-10">
                             <form onSubmit={handleSearch} action="" className="bg-white max-w-max rounded-lg flex items-center">
                                 <input type="search" placeholder="Search" value={searchTerm} onChange={handleSearchChange} className="p-5 rounded-3xl w-[160px] md:w-[500px] outline-none"/>
                                 <select onChange={handleSelectedOption} name="options" id="options" className="bg-white">

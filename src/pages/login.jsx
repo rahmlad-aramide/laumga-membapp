@@ -1,6 +1,6 @@
 import Navbar from "../layouts/main/navbar";
 import LoginForm from "../layouts/auth-forms/login-form";
-import { ToastContainer } from "react-toastify";
+// import { ToastContainer } from "react-toastify";
 
 export default function Login() {
   return (
@@ -9,7 +9,6 @@ export default function Login() {
         {/* NAVIGATION BAR */}
         <Navbar />
         {/* LOGIN FORM COMPONENT */}
-        <ToastContainer />
         <LoginForm />
       </div>
     </>

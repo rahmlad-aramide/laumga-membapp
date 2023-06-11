@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Terms from './Terms';
 import { signUp } from '../../apis';
 import { useNavigate } from 'react-router-dom';
-import {ToastContainer} from "react-toastify"
 import {notify, warn} from '../../main'
 import { Circles } from 'react-loader-spinner';
 
@@ -124,7 +123,6 @@ const Signup = () => {
   return (
     <section className='mt-20'>
       <Navbar />
-      <ToastContainer />
       <div>
         <div className="pt-5 mt-10 md:mt-20 pb-10 md:pb-20 bg-hero-image min-h-screen bg-center bg-black/50 font-mont">
           {policy ?

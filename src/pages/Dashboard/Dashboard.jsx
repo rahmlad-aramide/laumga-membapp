@@ -27,15 +27,15 @@ const Dashboard = () => {
             <div className='flex justify-around gap-3 md:block'>
               <div className='w-1/2 md:w-full px-2 flex flex-col ml-5 md:ml-0 md:mb-10'>
                 <div className='mx-auto mb-4'>
-                  <img src={recentPicture ? recentPicture : President} alt="recent passport" className='rounded-full' />
+                  <img src={recentPicture ? recentPicture : President} alt="recent passport" className='rounded-full w-full max-w-[100px] md:max-w-[200px]' />
                 </div>
-                <div className='mx-auto'>Recent Passport</div>
+                <div className='mx-auto text-center'>Recent Passport</div>
               </div>
               <div className='w-1/2 md:w-full px-2 flex flex-col mr-3 md:mr-0'>
                 <div className='mx-auto mb-4'>
-                  <img src={oldPicture ? oldPicture : President} alt="old passport" className='rounded-full' />
+                  <img src={oldPicture ? oldPicture : President} alt="old passport" className='rounded-full w-full max-w-[100px] md:max-w-[200px]' />
                 </div>
-                <div className='mx-auto'>Old Passport</div>
+                <div className='mx-auto text-center'>Old Passport</div>
               </div>
             </div>
           </div>

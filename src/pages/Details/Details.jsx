@@ -89,13 +89,14 @@ const Details = () => {
       id: userId,
       recentPicture: selectedFile,
       oldPicture: selectedFile2,
-      location: formFields.address,
+      location: formFields.location,
       occupation: formFields.occupation,
       phoneNumber1: formFields.phoneNo1,
       phoneNumber2: formFields.phoneNo2,
       about: formFields.about,
       middleName: formFields.name,
     }
+
 
     try {
       const res = await updateDetails(formData);
@@ -124,10 +125,10 @@ const Details = () => {
         navigate("/dashboard");
       }, 3000);
     } catch (error) {
+      console.log("Inside error")
       setLoading(false)
       setError(error)
       warn("An error has occured")
-      console.log("Inside error")
       console.error(error);
     }
   }

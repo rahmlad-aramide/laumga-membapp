@@ -86,7 +86,7 @@ const Signup = () => {
       return;
     }
 
-    if (parseInt(matric) < 150001) {
+    if (parseInt(matric) > 150001) {
       setInvalidMaric(true);
       return;
     }

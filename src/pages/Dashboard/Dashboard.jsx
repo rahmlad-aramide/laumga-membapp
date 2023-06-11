@@ -8,9 +8,15 @@ const Dashboard = () => {
   const email = localStorage.getItem("userEmail")
   const surname = localStorage.getItem("surname")
   const lastName = localStorage.getItem("lastName")
+  const middleName = localStorage.getItem("middleName")
   const matricNumber = localStorage.getItem("matricNumber")
   const occupation = localStorage.getItem("occupation")
+  const about = localStorage.getItem("about")
+  const location = localStorage.getItem("location")
   const recentPicture = localStorage.getItem("recentPicture")
+  const oldPicture = localStorage.getItem("oldPicture")
+  const number1 = localStorage.getItem("number1")
+  const number2 = localStorage.getItem("number2")
 
   return (
     <section>
@@ -27,7 +33,7 @@ const Dashboard = () => {
               </div>
               <div className='w-1/2 md:w-full px-2 flex flex-col mr-3 md:mr-0'>
                 <div className='mx-auto mb-4'>
-                  <img src={President} alt="old passport" className='rounded-full' />
+                  <img src={oldPicture ? oldPicture : President} alt="old passport" className='rounded-full' />
                 </div>
                 <div className='mx-auto'>Old Passport</div>
               </div>
@@ -41,7 +47,7 @@ const Dashboard = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5 bg-white rounded-2xl md:w-[90%] mx-auto mt-8 shadow-lg px-5 md:px-7 py-6 md:py-10">
                 <div>
                   <div className='font-normal sm:font-medium text-2xl'>Name</div>
-                  <div>{surname ? surname + ' ' + lastName : <p>Not set</p>}</div>
+                  <div>{!surname? <p>Not set</p> : (`${surname} ${middleName ? middleName : ""} ${lastName}`)}</div>
                 </div>
                 <div>
                   <div className='font-normal sm:font-medium text-2xl'>Matric No</div>
@@ -54,6 +60,22 @@ const Dashboard = () => {
                 <div>
                   <div className='font-normal sm:font-medium text-2xl'>Occupation</div>
                   <div>{occupation ? occupation : <p>Not set, update details to set it</p>}</div>
+                </div>
+                <div>
+                  <div className='font-normal sm:font-medium text-2xl'>Short Bio</div>
+                  <div>{about ? about : <p>Not set, update details to set it</p>}</div>
+                </div>
+                <div>
+                  <div className='font-normal sm:font-medium text-2xl'>Location</div>
+                  <div>{location ? location : <p>Not set, update details to set it</p>}</div>
+                </div>
+                <div>
+                  <div className='font-normal sm:font-medium text-2xl'>Phone Number</div>
+                  <div>{number1 ? number1 : <p>Not set, update details to set it</p>}</div>
+                </div>
+                <div>
+                  <div className='font-normal sm:font-medium text-2xl'>Alternative Number</div>
+                  <div>{number2 ? number2 : <p>Not set, update details to set it</p>}</div>
                 </div>
               </div>
               <div className='mt-12 mb-12 md:mb-0 flex justify-end items-end'>

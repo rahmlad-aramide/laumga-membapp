@@ -103,17 +103,14 @@ const Signup = () => {
     }
   };
 
-  let theError, theResponse
   // display error message component
   if (error.message) {
-    warn(error.message)
-    theError = <p className='bg-red-200 p-4 md:p-8 border md:relative md:left-[50%] md:right-[50%] border-red-700 rounded-md text-red-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{error.message}. Please try again!</p>;
+    warn(`${error.message}. Pls try again.`)
   }
 
   // display success message component
   if (response.message) {
-    notify(response.message)
-    theResponse = <p className='bg-green-200 p-4 md:p-8 border md:relative left-[50%] right-[50%] border-green-700 rounded-md text-green-800 font-mont max-w-[350px] m-auto mb-2 text-center'>{response.message}. Please login!</p>;
+    notify(`${response.message}, proceed to login!`)
   }
 
 
@@ -130,8 +127,6 @@ const Signup = () => {
               </div>
               <form onSubmit={handleSignupSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {theError ? <span> {theError} </span>: null} {/* DISPLAY ERROR MESSAGE */}
-                  {theResponse ? <span> {theResponse} </span> : null} {/* DISPLAY SUCCESS MESSAGE */}
                   <div>
                     <label htmlFor="sname">Surname</label>
                     <Input py="12px" id="sname" type="text" name="sname" value={sname} onChange={handleChange} placeholder="Enter your surname here" required />
@@ -158,13 +153,9 @@ const Signup = () => {
                     {matched===false && <p className='text-pink-600 mt-2'>Password doesn&apos;t match!</p>}
                   </div>
                   <div>
-                    <div>Picture (max 100kb)</div>
+                    <div>Recent Passport (max 100kb)</div>
                     <FileUploadInput selectedFile={selectedFile1} handleFileChange={handleFileUpload1} />
                   </div>
-                  {/* <div>
-                    <div>Recent Passport</div>
-                    <FileUploadInput selectedFile={selectedFile2} handleFileChange={handleFileUpload2} />
-                  </div> */}
                 </div>
                 <div className='flex justify-end items-end'>
                   <div className='mt-12 flex justify-end items-end'>

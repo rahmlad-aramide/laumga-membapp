@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { signIn } from "../../apis/index";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Circles } from 'react-loader-spinner';
 import {notify, warn} from '../../main';
 
@@ -94,8 +94,10 @@ export default function LoginForm() {
 					{/* PASSWORD INPUT */}
 					<label htmlFor="password" className="text-black">Password</label>
 					<input type="password" value={password} placeholder="Enter password" onChange={handlePasswordChange} required className="mt-3 bg-form_bg rounded-md outline-none p-3 md:p-4 mb-3" />
-					<p className=" text-center text-main underline">Forgot Password?</p>
 					<button type="submit" className=" bg-main font-mont w-full mb-6 m-auto rounded-md mt-6 text-white">{loading ? <div className="p-4 flex justify-center">{loader}</div> : <p className=" p-4">Login</p>}</button>
+					<div className="flex justify-center">Don&apos;t have an account?
+						<Link to="/signup" className="ml-2 text-center text-main underline">Sign up</Link>
+					</div>
 				</form>
 			</div>
 		</>

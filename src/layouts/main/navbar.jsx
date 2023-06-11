@@ -3,12 +3,14 @@ import { Link, NavLink } from "react-router-dom";
 import MobileNavbar from "./mobileNav";
 import NewLogo from "../../assets/images/logo.png";
 import { Logout } from "./mobileNav";
+import {ToastContainer} from "react-toastify";
 
 export default function Navbar() {
   const userId = localStorage.getItem('userId');
 
   return (
     <header>
+      <ToastContainer />
       <div className="fixed top-0 left-0 w-full bg-white shadow h-20 flex justify-center font-kanit z-20">
         <div className="max-w-[1200px] w-full h-full flex items-center justify-between px-4">
           {/* brand - logo and name */}

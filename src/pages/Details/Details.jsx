@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { updateDetails } from '../../apis';
 import { useNavigate } from 'react-router-dom';
-import {ToastContainer} from "react-toastify"
 import {notify, warn} from '../../main'
 import { Circles } from 'react-loader-spinner';
 
@@ -146,7 +145,6 @@ const Details = () => {
   return (
     <section>
       <Navbar />
-      <ToastContainer />
       <div className="pt-5 mt-10 md:mt-20 pb-10 md:pb-20 bg-hero-image min-h-screen bg-center bg-black/50 bg-blend-overlay font-mont">
         <div className="bg-white rounded-2xl w-[90%] md:w-[70%] max-w-[1088px] mx-auto mt-[102px] shadow-lg px-7 md:px-14 py-6 md:py-10">
           <div className="text-main font-mont font-medium text-4xl mb-5">

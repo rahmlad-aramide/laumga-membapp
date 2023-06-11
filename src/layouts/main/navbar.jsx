@@ -18,7 +18,7 @@ export default function Navbar() {
             <div className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 font-mont cursor-pointer">
               <img src={NewLogo} alt="" className="h-[48px] w-auto" />
               <span className="font-semibold md:font-bold text-xl sm:text-2xl">
-                LAUMGA <br /> MembApp
+                LAUMGA <br /> MEMBAPP
               </span>
             </div>
           </Link>

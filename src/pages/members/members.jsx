@@ -89,6 +89,7 @@ export default function Members() {
                                 <div className={`${loading ? 'mr-2 min-w-max' : 'mr-0 min-w-max'}`}>{loading ? loader : <button type="submit" className="mr-5"><img src={search} alt="search" /></button>}</div>
                             </form>
                         </div>
+                            {searchResults && <p className="text-center text-white text-[15px] md:text-[30px]">Search result(s) here</p>}
                         <div className="w-[90%] md:w-[90%] relative left-5 right-5 m-auto">
                             <ul className="flex flex-wrap md:justify-around gap-10 py-10">
                                 {searchResults ? searchResults.map((result) => (
@@ -104,10 +105,10 @@ export default function Members() {
                                 )) : <p className="text-white text-[15px] md:text-[30px]">No result(s) found</p>}
                             </ul>
                         </div>
-                        <div>   
-                            <div>These are our members</div>
+                        <div className="flex w-full items-center justify-center mb-8">   
+                            <div className="text-white text-center text-lg md:text-2xl">These are our members</div>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 place-items-center gap-5 md:gap-10 my-2 md:my-4 pb-5 md:pb-20">
                             <div className=" bg-form_bg break-words rounded-xl max-w-[285px] text-center p-10">
                                     <img src={President} alt="user image" width={150} className="rounded-full mx-auto" />
                                     <p className="mt-5">Abdrahman Oladimeji</p>

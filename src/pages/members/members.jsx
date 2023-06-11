@@ -99,7 +99,7 @@ export default function Members() {
                                         </div>
                                     </li>
                                 )) : <p className="text-white text-[15px] md:text-[30px]">No result(s) found</p>}
-                                <div className=" bg-form_bg break-words rounded-xl max-w-[285px] text-center p-10">
+                                {/* <div className=" bg-form_bg break-words rounded-xl max-w-[285px] text-center p-10">
                                     <img src={President} alt="user image" width={150} className="rounded-full mx-auto" />
                                     <p className="mt-5">Abdulrahman Hakeem</p>
                                     <p><span className="font-semibold">Location: </span>Lagos, Nigeria</p>
@@ -126,7 +126,7 @@ export default function Members() {
                                     <p><span className="font-semibold">Location: </span>Lagos, Nigeria</p>
                                     <p><span className="font-semibold">Email: </span>abdularahmanhak@gmail.com</p>
                                     <p><span className="font-semibold">Phone: </span>08166223687</p>
-                                </div>
+                                </div> */}
                             </ul>
                         </div>
                     </div>

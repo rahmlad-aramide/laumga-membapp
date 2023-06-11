@@ -2,7 +2,6 @@ import { useState } from "react";
 import { signIn } from "../../apis/index";
 import { useNavigate } from "react-router-dom";
 import { Circles } from 'react-loader-spinner';
-import {ToastContainer} from "react-toastify";
 import {notify, warn} from '../../main';
 
 const loader = <Circles
@@ -86,7 +85,6 @@ export default function LoginForm() {
 		<>
 			{/* LOGIN FORM */}
 			<div className="shadow-2xl max-w-[550px] mx-7 md:mx-auto relative top-48 px-8 sm:px-20 py-10 rounded-[40px] bg-white bg-no-repeat bg-cover bg-center bg-blend-overlay">
-				<ToastContainer />
 				{/* *********************** LOGIN FORM *************************** */}
 				<form onSubmit={handleLoginSubmit} className="flex flex-col font-man">
 					<p className=" font-mont text-[30px] md:text-[40px] text-main font-[500] text-center mb-2">Login</p>

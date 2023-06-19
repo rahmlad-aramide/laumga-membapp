@@ -40,7 +40,7 @@ const Signup = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(null);
   const [matched, setMatched] = useState(null);
-  const [invalidMaric, setInvalidMaric] = useState(null);
+  // const [invalidMaric, setInvalidMaric] = useState(null);
 
   const handleFileUpload1 = (event) => {
     const file = event.target.files[0];
@@ -67,7 +67,7 @@ const Signup = () => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
     setMatched(null)
-    setInvalidMaric(null)
+    // setInvalidMaric(null)
   }
   const handleSignupSubmit = async (event) => {
     event.preventDefault();
@@ -85,10 +85,6 @@ const Signup = () => {
       return;
     }
 
-    if (parseInt(matric) > 150001) {
-      setInvalidMaric(true);
-      return;
-    }
     setError('');
     setLoading(true);
 
@@ -143,7 +139,7 @@ const Signup = () => {
                   <div>
                     <label htmlFor="matric">Matric No</label>
                     <Input py="12px" id="matric" type="text" name="matric" value={matric} onChange={handleChange} placeholder="Enter your matric number here" required />
-                    {invalidMaric===true && <p className='text-pink-600 mt-2 break-words'>Matric number doesn&apos;t meet requirement!</p>}
+                    {/* {invalidMaric===true && <p className='text-pink-600 mt-2 break-words'>Matric number doesn&apos;t meet requirement!</p>} */}
                   </div>
                   <div>
                     <label htmlFor="email">Email</label>

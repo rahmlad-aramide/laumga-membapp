@@ -67,7 +67,7 @@ const Signup = () => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
     setMatched(null)
-    setInvalidMaric(null)
+    // setInvalidMaric(null)
   }
   const handleSignupSubmit = async (event) => {
     event.preventDefault();
@@ -85,10 +85,6 @@ const Signup = () => {
       return;
     }
 
-    // if (parseInt(matric) > 150001) {
-    //   setInvalidMaric(true);
-    //   return;
-    // }
     setError('');
     setLoading(true);
 
